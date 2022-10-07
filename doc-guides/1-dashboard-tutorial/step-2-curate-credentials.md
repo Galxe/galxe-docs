@@ -1,6 +1,7 @@
 ---
-sidebar_label: "Step 2 - Curate Credentials"
+sidebar_label: Step 2 - Curate Credentials
 sidebar_position: 4
+slug: /
 ---
 
 # Step 2 - Curate Credentials
