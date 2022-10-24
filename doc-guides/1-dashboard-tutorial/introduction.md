@@ -5,7 +5,7 @@ slug: /
 ---
 # Getting Started
 
-## What is Galxe Dashboard?
+## What is Galxe Dashboard?hahahaha
 
 International Space Station is the backbone to the grand universe exploration, and so is our Dashboard to Galxe. Galxe Dashboard is an easy-to-use yet powerful web editor for developers to make full use of our plug-and-play modules. You can curate credentials, power your own NFTs in metaverse, and launch campaigns by simply writing blogs.
 
