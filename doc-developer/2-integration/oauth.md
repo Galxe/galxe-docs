@@ -20,7 +20,7 @@ The request flow to authorize users for your app is:
 ### URL
 
 ```html
-GET /oauth
+GET https://galxe.com/oauth
 ```
 
 ```bash
@@ -66,7 +66,7 @@ Exchange this `code` for an access token.
 
 ```html
 Content-Type:application/x-www-form-urlencoded
-POST /oauth/auth/2/token
+POST https://api.galxe.com/oauth/auth/2/token
 ```
 
 ```bash
@@ -102,7 +102,7 @@ By default, the response takes the following form:
 
 ```html
 Content-Type:application/x-www-form-urlencoded
-POST /oauth/auth/2/token
+POST https://api.galxe.com/oauth/auth/2/token
 ```
 
 ```bash
@@ -136,7 +136,7 @@ $ curl -d 'grant_type=refresh_token&refresh_token=${REFRESH-TOKEN}&client_id=${C
 
 ```html
 Authorization: Bearer ${ACCESS-TOKEN}
-GET /oauth/api/2/token
+GET https://api.galxe.com/oauth/api/2/token
 ```
 
 ```bash
@@ -165,7 +165,7 @@ $ curl -H "Authorization: Bearer ${ACCESS-TOKEN}" https://api.galxe.com/oauth/ap
 
 ```html
 Authorization: Bearer ${ACCESS-TOKEN}
-GET /oauth/api/2/user
+GET https://api.galxe.com/oauth/api/2/user
 ```
 
 ```bash
