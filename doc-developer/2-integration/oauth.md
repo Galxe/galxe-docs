@@ -44,7 +44,7 @@ https://galxe.com/oauth?client_id=${CLIENT-ID}&scope=${SCOPE}&redirect_uri=${RED
 | client_id | string | **Required**. The client ID you received from Galxe when you registered. |
 | scope | string | **Required**. A space-delimited list of scopes. If not provided, scope defaults to an empty list for users that have not authorized any scopes for the application. |
 | redirect_uri | string | **Required**. The URL in your application where users will be sent after authorization, also known as callback url. |
-| state | string | Required. An unguessable random string. It is used to protect against cross-site request forgery attacks. |
+| state | string | **Required**. An unguessable random string. It is used to protect against cross-site request forgery attacks. |
 | code_challenge | string | PKCE (Proof Key for Code Exchange) is an extension to the Authorization Code flow to prevent CSRF and authorization code injection attacks. PKCE is not a replacement for a client secret, and PKCE is recommended even if a client is using a client secret. |
 | code_challenge_method | string | Encoding method, plain or S256 (sha256), S256 is recommended. |
 
