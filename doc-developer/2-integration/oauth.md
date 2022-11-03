@@ -39,8 +39,12 @@ https://galxe.com/oauth?client_id=${CLIENT-ID}&scope=${SCOPE}&redirect_uri=${RED
 
 ### Parameters
 
+| Name | Type | Description |
 | --- | --- | --- |
-
+| client_id | string | Required. The client ID you received from Galxe when you registered. |
+| scope | string | Required. A space-delimited list of scopes. If not provided, scope defaults to an empty list for users that have not authorized any scopes for the application. |
+| redirect_uri | string | Required. The URL in your application where users will be sent after authorization, also known as callback url. |
+| state | string | Required. An unguessable random string. It is used to protect against cross-site request forgery attacks. |
 | code_challenge | string | PKCE (Proof Key for Code Exchange) is an extension to the Authorization Code flow to prevent CSRF and authorization code injection attacks. PKCE is not a replacement for a client secret, and PKCE is recommended even if a client is using a client secret. |
 | code_challenge_method | string | Encoding method, plain or S256 (sha256), S256 is recommended. |
 
@@ -71,7 +75,12 @@ $ curl -d 'client_id=${CLIENT-ID}&client_secret=${CLIENT-SECRET}&code=${CODE}&gr
 
 ### Parameters
 
+| Name | Type | Description |
 | --- | --- | --- |
+| client_id | string | Required. The client ID you received from Galxe for your OAuth App. |
+| client_secret | string | Required. The client secret you received from Galxe for your OAuth App. |
+| code | string | Required. The code you received as a response to OAuth Authorize Step. |
+| code_verifier | string | Plain string of code_challenge, only used when requiring code_challenge. |
 
 ### Response
 
@@ -102,7 +111,12 @@ $ curl -d 'grant_type=refresh_token&refresh_token=${REFRESH-TOKEN}&client_id=${C
 
 ### Parameters
 
+| Name | Type | Description |
 | --- | --- | --- |
+| refresh_token | string | Required. The token generated when the Galxe App owner enables expiring tokens and issues a new user access token. |
+| grant_type | string | Required. Value must be refresh_token (required by the OAuth specification). |
+| client_id | string | Required. The client ID for Galxe App. |
+| client_secret | string | Required. The client secret for Galxe App. |
 
 ### Response
 
@@ -131,7 +145,9 @@ $ curl -H "Authorization: Bearer ${ACCESS-TOKEN}" https://api.galxe.com/oauth/ap
 
 ### Parameters
 
+| Name | Type | Description |
 | --- | --- | --- |
+| access_token | string | Required. Append it to header. |
 
 ### Response
 
@@ -158,6 +174,7 @@ $ curl -H "Authorization: Bearer ${ACCESS-TOKEN}" https://api.galxe.com/oauth/ap
 
 ### Parameters
 
+| Name | Type | Description |
 | --- | --- | --- |
 | access_token | string | Required. Append it to request header. |
 | scope | string | A space-delimited list of scopes of user data that your APP required. If not set, will set to access token related scope by default. |
