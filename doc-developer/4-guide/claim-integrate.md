@@ -3,11 +3,10 @@ sidebar_label: Integrate claim API
 sidebar_position: 3
 slug: claim-integrate
 ---
-
-
 # 1. Introduction
 
 ## 1.1. Entities Diagram
+
 ![Diagram.png](https://d257b89266utxb.cloudfront.net/galaxy/images/galaxy/1659682658861468090.png)
 
 ### 1.1.1. Space
@@ -71,63 +70,63 @@ query {
 
 ### 2.2.2. **Arguments**
 
-| Arguments | Description |
-| --- | --- |
+| Arguments  | Description                                                                        |
+| ---------- | ---------------------------------------------------------------------------------- |
 | id String! | You can get campaign id from Galxe Dashboard page’ url once you created a campaign |
 
 ### 2.2.3. **Fields**
 
-| Fields | Description |
-| --- | --- |
-| id | Campaign id is used to identify a certain campaign |
-| name | Campaign name |
-| description  | Campaign description |
-| thumbnail  | How many NFTs have been minted/claimed for this campaign |
-| numNFTMinted  | How many NFTs have been minted/claimed for this campaign |
-| startTime  | Campaign start time in unix time |
-| endTime  | Campaign end time in unix time, if null means no end time |
-| formula | ormula is a algebraic expression of credentials and entries, the output of formula decide whether and how many NFTs a user can claim. |
-| claimedTimes(address: $String!) | How many times a certain address has successfully claimed in this campaign |
-| space | Space is object for aggregating your campaigns. Check object fields below |
-| nftCore | NFT contract that used for this campaign. Check object fields below |
-| nftTemplate | NFT template contains info that used for generating metadata for a minted NFT. Check object fields below |
-| creds | Credentials are element object that determine whether an address is eligible to claim the NFT. Check object fields below |
+| Fields                            | Description                                                                                                                                          |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                                | Campaign id is used to identify a certain campaign                                                                                                   |
+| name                              | Campaign name                                                                                                                                        |
+| description                       | Campaign description                                                                                                                                 |
+| thumbnail                         | How many NFTs have been minted/claimed for this campaign                                                                                             |
+| numNFTMinted                      | How many NFTs have been minted/claimed for this campaign                                                                                             |
+| startTime                         | Campaign start time in unix time                                                                                                                     |
+| endTime                           | Campaign end time in unix time, if null means no end time                                                                                            |
+| formula                           | ormula is a algebraic expression of credentials and entries, the output of formula decide whether and how many NFTs a user can claim.                |
+| claimedTimes(address: $String!)   | How many times a certain address has successfully claimed in this campaign                                                                           |
+| space                             | Space is object for aggregating your campaigns. Check object fields below                                                                            |
+| nftCore                           | NFT contract that used for this campaign. Check object fields below                                                                                  |
+| nftTemplate                       | NFT template contains info that used for generating metadata for a minted NFT. Check object fields below                                             |
+| creds                             | Credentials are element object that determine whether an address is eligible to claim the NFT. Check object fields below                             |
 | holders(first:Int, after: String) | It shows user who have NFT minted from this campaign, first is same as limit, after is same as offset but it’s a number string and starts from “-1”. |
 
 ### 2.2.3.1. **Space fields**
 
-| Fields | Description |
-| --- | --- |
-| id | Space id |
-| name | Space name |
-| alias | Space alias, used for constructing the space url |
-| thumbnail  | Space icon image |
+| Fields    | Description                                      |
+| --------- | ------------------------------------------------ |
+| id        | Space id                                         |
+| name      | Space name                                       |
+| alias     | Space alias, used for constructing the space url |
+| thumbnail | Space icon image                                 |
 
 ### 2.2.3.2. **NFT Core fields**
 
-| Fields | Description |
-| --- | --- |
-| name | NFT contract name |
+| Fields          | Description          |
+| --------------- | -------------------- |
+| name            | NFT contract name    |
 | contractAddress | NFT contract address |
 
 ### 2.2.3.3. **NFT Template fields**
 
-| Fields | Description |
-| --- | --- |
-| name | NFT name metadata |
-| image | NFT image url metadata |
-| ipfsImage | NFT decentralized image url metadata |
-| traits | NFT traits(you can refer to opensea NFT traits) metadata |
+| Fields    | Description                                              |
+| --------- | -------------------------------------------------------- |
+| name      | NFT name metadata                                        |
+| image     | NFT image url metadata                                   |
+| ipfsImage | NFT decentralized image url metadata                     |
+| traits    | NFT traits(you can refer to opensea NFT traits) metadata |
 
 ### 2.2.3.4. **Creds fields**
 
-| Fields | Description |
-| --- | --- |
-| id | Credential ID |
-| name | Credential name |
-| description | Credential description |
-| credType | Credential type |
-| credSource | Credential data source |
+| Fields                     | Description                                          |
+| -------------------------- | ---------------------------------------------------- |
+| id                         | Credential ID                                        |
+| name                       | Credential name                                      |
+| description                | Credential description                               |
+| credType                   | Credential type                                      |
+| credSource                 | Credential data source                               |
 | eligible(address: $String) | If a certain address is eligible for this credential |
 
 ### 2.2.4. **Query example**
@@ -254,11 +253,94 @@ query {
 }
 ```
 
-## 2.3. Mutation prepareParticipate
+## 2.3. Query and mutate credentail
+
+Y﻿ou can get credential detail, check if a wallet address in eligible against this credential or verify this credential with a wallet address.
+
+### 2.4.1. Get credentail info
+
+```graphql
+query {
+  credential(id:220244101447720960){
+    name
+    description
+    referenceLink
+    credType
+    credSource
+  }
+}
+
+# response
+{
+  "data": {
+    "credential": {
+      "name": "MantaNetwork - Twitter Followers",
+      "description": "MantaNetwork‘s Twitter followers",
+      "referenceLink": "https://twitter.com/MantaNetwork",
+      "credType": "TWITTER",
+      "credSource": "TWITTER_FOLLOW"
+    }
+  }
+}
+```
+
+### 2.4.2. Update credential Items
+
+[Use API to update credential Items | Galxe Docs](https://docs.galxe.com/developer/guide/api-cred-items-update)
+
+### 2.4.3. Check address eligibility
+
+```graphql
+query {
+  credential(id:220244101447720960){
+    eligible(address:"0xBb3A7bc36b5baFa7691Ccb708EbF299B6d521b01")
+  }
+}
+
+# response
+{
+  "data": {
+    "credential": {
+      "eligible": 0
+    }
+  }
+}
+```
+
+### 2.4.4. Check address eligibility 2
+
+```graphql
+mutation {
+  verifyCred(input:{
+    credId:220244101447720960,
+    address:"0xBb3A7bc36b5baFa7691Ccb708EbF299B6d521b01"
+  })
+}
+
+# response
+{
+  "errors": [
+    {
+      "message": "1004:If you have fulfilled the requirement, please try 1 minute later. \n\nUpdate Frequency: every 1 minute",
+      "path": [
+        "verifyCredential"
+      ],
+      "extensions": {
+        "code": "Unknown"
+      }
+    }
+  ],
+  "data": {
+    "verifyCredential": false
+  }
+}
+```
+
+## 2.4. Mutation prepareParticipate
 
 This API send the request for minting a NFT once user claim, our backend will eventually call the NFT contract to have the NFT minted to user.
 
-### 2.3.1. M**utation**
+### 2.4.1. M**utation**
 
 ```graphql
 mutation {
@@ -266,25 +348,25 @@ mutation {
 }
 ```
 
-### 2.3.2. **Arguments**
+### 2.4.2. **Arguments**
 
-| Arguments | Description |
-| --- | --- |
-| signature String! | Deprecating, keep it a empty string |
-| campaignID String! | Campaign ID |
-| address String! | User’ wallet address, you can get it from user’s wallet connection or just a plain test input. In either way, for a successful claim, this address must be eligible through credentials of this campaign. |
-| mintCount Int | Batch claim count, if batch claim is needed. Otherwise don’t pass in this argument. |
+| Arguments          | Description                                                                                                                                                                                               |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| signature String!  | Deprecating, keep it a empty string                                                                                                                                                                       |
+| campaignID String! | Campaign ID                                                                                                                                                                                               |
+| address String!    | User’ wallet address, you can get it from user’s wallet connection or just a plain test input. In either way, for a successful claim, this address must be eligible through credentials of this campaign. |
+| mintCount Int      | Batch claim count, if batch claim is needed. Otherwise don’t pass in this argument.                                                                                                                       |
 
-### 2.3.3. **Fields**
+### 2.4.3. **Fields**
 
-| Fields | Description |
-| --- | --- |
-| allow | If the user is able to claim the NFT |
-| disallowReason  | Claim failed reason |
-| mintFuncInfo-> verifyIDs | Unique ids(if it’s a batch claim, there will be multiple ids) for identifying and getting on-chain Tx(s) |
-| mintFuncInfo-> nftCoreAddress  | NFT contract address |
+| Fields                        | Description                                                                                              |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------- |
+| allow                         | If the user is able to claim the NFT                                                                     |
+| disallowReason                | Claim failed reason                                                                                      |
+| mintFuncInfo-> verifyIDs      | Unique ids(if it’s a batch claim, there will be multiple ids) for identifying and getting on-chain Tx(s) |
+| mintFuncInfo-> nftCoreAddress | NFT contract address                                                                                     |
 
-### 2.3.4. **Query example**
+### 2.4.4. **Query example**
 
 ```graphql
 mutation {
@@ -303,7 +385,7 @@ mutation {
 }
 ```
 
-### 2.3.5. **Response example**
+### 2.4.5. **Response example**
 
 ```json
 {
@@ -322,11 +404,11 @@ mutation {
 }
 ```
 
-## 2.4. Query participations
+## 2.5. Query participations
 
 Once the claim request is sent, use this API to monitor on-chain Tx status.
 
-### 2.4.1. Query
+### 2.5.1. Query
 
 ```graphql
 query {
@@ -334,20 +416,20 @@ query {
 }
 ```
 
-### 2.4.2. **Arguments**
+### 2.5.2. **Arguments**
 
-| Arguments | Description |
-| --- | --- |
-| id [Int!]! | ids are verify ids returned by mutation prepareParticipate API |
+| Arguments   | Description                                                    |
+| ----------- | -------------------------------------------------------------- |
+| id \[Int!]! | ids are verify ids returned by mutation prepareParticipate API |
 
-### 2.4.3. F**ields**
+### 2.5.3. F**ields**
 
-| Fields | Description |
-| --- | --- |
-| tx | Tx address |
-| status  | Tx status. Status enum: **Generated**, tx is just born; **Pending**, tx is in pending; **Success**, tx is succeed; **Queueing**, tx is still in message queue; **Failed**, tx is failed |
+| Fields | Description                                                                                                                                                                             |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| tx     | Tx address                                                                                                                                                                              |
+| status | Tx status. Status enum: **Generated**, tx is just born; **Pending**, tx is in pending; **Success**, tx is succeed; **Queueing**, tx is still in message queue; **Failed**, tx is failed |
 
-### 2.4.4. **Query example**
+### 2.5.4. **Query example**
 
 ```graphql
 query {
@@ -366,10 +448,9 @@ query {
     ]
   }
 }
-
 ```
 
-### 2.4.5. **Response example**
+### 2.5.5. **Response example**
 
 ```json
 {
