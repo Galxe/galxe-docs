@@ -261,32 +261,78 @@ Y﻿ou can get credential detail, check if a wallet address in eligible against 
 
 ```graphql
 query {
-  credential(id:123){
+  credential(id:220244101447720960){
     name
     description
     referenceLink
+    credType
+    credSource
+  }
+}
+
+# response
+{
+  "data": {
+    "credential": {
+      "name": "MantaNetwork - Twitter Followers",
+      "description": "MantaNetwork‘s Twitter followers",
+      "referenceLink": "https://twitter.com/MantaNetwork",
+      "credType": "TWITTER",
+      "credSource": "TWITTER_FOLLOW"
+    }
   }
 }
 ```
 
-### 2.4.2. Check address eligibility
+### 2.4.2. Update credential Items
+
+[Use API to update credential Items | Galxe Docs](https://docs.galxe.com/developer/guide/api-cred-items-update)
+
+### 2.4.3. Check address eligibility
 
 ```graphql
 query {
-  credential(id:123){
-    eligible(address:"")
+  credential(id:220244101447720960){
+    eligible(address:"0xBb3A7bc36b5baFa7691Ccb708EbF299B6d521b01")
+  }
+}
+
+# response
+{
+  "data": {
+    "credential": {
+      "eligible": 0
+    }
   }
 }
 ```
 
-### 2.4.3. Verify address for certain credentail
+### 2.4.4. Check address eligibility 2
 
 ```graphql
 mutation {
   verifyCred(input:{
-    credId:111,
-    address:""
+    credId:220244101447720960,
+    address:"0xBb3A7bc36b5baFa7691Ccb708EbF299B6d521b01"
   })
+}
+
+# response
+{
+  "errors": [
+    {
+      "message": "1004:If you have fulfilled the requirement, please try 1 minute later. \n\nUpdate Frequency: every 1 minute",
+      "path": [
+        "verifyCredential"
+      ],
+      "extensions": {
+        "code": "Unknown"
+      }
+    }
+  ],
+  "data": {
+    "verifyCredential": false
+  }
 }
 ```
 
