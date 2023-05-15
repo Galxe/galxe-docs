@@ -185,10 +185,6 @@ const config = {
                 href:
                   "https://twitter.com/intent/follow?screen_name=GalxeHQ",
               },
-              {
-                label: "Telegram",
-                href: "https://t.me/GalxeHQ",
-              },
             ],
           },
           {

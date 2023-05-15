@@ -47,6 +47,6 @@ If you want to contribute credentials to the Galaxy data network, or leverage Ga
 
 ## Join Galxe Community
 
-[Website](https://galxe.com/) | [Docs](https://docs.galxe.com/) | [Twitter](https://twitter.com/intent/follow?screen_name=GalxeHQ) | [Medium](https://blog.galxe.com/) | [Discord](https://discord.gg/galxe) | [Telegram](https://t.me/GalxeHQ) | [Newsletter](http://newsletter.galxe.com/)
+[Website](https://galxe.com/) | [Docs](https://docs.galxe.com/) | [Twitter](https://twitter.com/intent/follow?screen_name=GalxeHQ) | [Medium](https://blog.galxe.com/) | [Discord](https://discord.gg/galxe) | [Newsletter](http://newsletter.galxe.com/)
 
 For developers & NFT artists who are interested in working with Galxe’s partner network, [join our Discord community](https://discord.gg/galxe) and learn more.
