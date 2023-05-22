@@ -174,9 +174,16 @@ query {
       eligible(address: "0xBb3A7bc36b5baFa7691Ccb708EbF299B6d521b05")
     }
 
-    holders(first:2){
-      list{
-        address
+    nftHolderSnapshot{
+      holders(
+        block:43009180
+        first:100
+        after:"-1"
+      ){
+        list{
+          id
+          holder
+        }
       }
     }
   }
