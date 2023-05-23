@@ -245,15 +245,24 @@ query {
           "eligible": 0
         }
       ],
-      "holders": {
-        "list": [
-          {
-            "address": "0x000000008524e1ABb50cc2B01DbabDEf6D2A5C82"
-          },
-          {
-            "address": "0x00000000B9D65FbEDFE87673e8518452aE74a13b"
-          }
-        ]
+      "nftHolderSnapshot": {
+        "holders": {
+          "list": [
+            {
+              "id": "840612",
+              "holder": "0xb85b3d61439a3d70d3df7913a3a764f352b32c55"
+            },
+            {
+              "id": "840633",
+              "holder": "0x2357f665d833c517238eda7f6ef4a1f323f677f0"
+            },
+            {
+              "id": "840666",
+              "holder": "0x8bb60421193a2c2ea2bb442ff162f3e3f3a70f68"
+            },
+            ...
+          ]
+        }
       }
     }
   }
