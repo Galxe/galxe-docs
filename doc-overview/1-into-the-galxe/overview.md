@@ -5,7 +5,7 @@ slug: /
 ---
 # Overview
 
-Galxe is the leading platform for building web3 community. With over 11 million unique users to date, Galxe has propelled the growth of Optimism, Polygon, Arbitrum, and more than 2100 partners with reward-based loyalty programs. Start your campaign today at [galxe.com](http://galxe.com/)! [](http://galxe.com/)
+Galxe is the leading platform for building web3 community. With over 11 million unique users to date, Galxe has propelled the growth of Optimism, Polygon, Arbitrum, and more than 2600 partners with reward-based loyalty programs. Start your campaign today at [galxe.com](http://galxe.com/)! [](http://galxe.com/)
 
 ## What are digital credentials
 
