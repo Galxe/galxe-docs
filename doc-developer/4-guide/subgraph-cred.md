@@ -3,7 +3,7 @@ sidebar_label: How to setup a Subgraph credential through dashboard
 sidebar_position: 2
 slug: subgraph-cred
 ---
-# How to setup a Subgraph/GraphGL credential through dashboard
+# How to setup a Subgraph/GraphQL credential through dashboard
 
 ## Introductions
 
