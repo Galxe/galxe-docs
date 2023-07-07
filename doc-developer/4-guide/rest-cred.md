@@ -1,6 +1,6 @@
 ---
 sidebar_label: How to set a REST credential through dashboard
-sidebar_position: 5
+sidebar_position: 6
 slug: rest-cred
 ---
 # How to set a REST credential through dashboard
