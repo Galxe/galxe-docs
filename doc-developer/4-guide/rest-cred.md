@@ -1,6 +1,6 @@
 ---
 sidebar_label: How to set a REST credential through dashboard
-sidebar_position: 6
+sidebar_position: 3
 slug: rest-cred
 ---
 # How to set a REST credential through dashboard
@@ -138,6 +138,7 @@ As part of a `POST` request, a data payload can be sent to the server in the b
 
 ### Expression
 
+Expression is used to evaluate against the reponse to check if the address is eligible for the credential. 
 The expression is a JavaScript (ES6) function of type signature: `(object) => int`. The object that will be passed as the parameter to the function is
 the `data` object of the response.
 The function should return either number 1 or 0, representing if the address is eligible for this subgraph credential. 
