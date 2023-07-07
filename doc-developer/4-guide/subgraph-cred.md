@@ -1,13 +1,24 @@
 ---
-sidebar_label: How to setup a Subgraph credential through dashboard
+sidebar_label: How to setup a Subgraph or GraphQL-sourced credential
 sidebar_position: 2
 slug: subgraph-cred
 ---
-# How to setup a Subgraph/GraphQL credential through dashboard
+# How to setup a Subgraph or GraphQL-sourced credential
 
 ## Introductions
 
-Subgraph type credential takes a single wallet address as input and outputs 0(false)/1(true) to indicate whether the wallet address is eligible. It requires 3 fields to be filled in: **GraphQL Endpoint (HTTPs)**, **Query** and **Expression**.
+GraphQL-sourced credential, including Subgraph credential, is a way for Galxe to pull data from your GraphQL endpoint (or any endpoint that you are legally allowed to use).
+When a user tries to verify himself on Galxe, Galxe will construct a GraphQL Query, where the address of the user will be passed in as the argument, and send it to the specified endpoint.
+After response is received, it will be passed to the Javascript expression, where it will return  0(false)/1(true) to indicate whether the wallet address is eligible. 
+
+The workflow is
+
+```
+galxe.com                          galxe backend                                 your backend
+---------------------------------------------------------------------------------------------
+user_address          ---->   GraphQL Query based on config             ---->        Endpoint
+crendential for user  <----   Expression evaluation on response         <---- 
+```
 
 ### GraphQL Endpoint (HTTPs):
 
@@ -16,19 +27,20 @@ It's the HTTPs endpoint where Subgraph queries go to, see the example below.
 NOTE: If you saw a error when testing the API during creating a credential, check if the endpoint is a valid GraphQL
 API endpoint. Common misconfigurations include 
 (1) incorrectly used a GraphQL *playground* url, that usually ends with `/graph`, 
-(2) the GraphQL endpoint does now allow CORS from galxe.com.
+(2) the GraphQL endpoint does not allow CORS from galxe.com.
 
 ### Query:
 
-The GraphQL query, and it requires a single wallet address as input. For more detials, please refer to [Querying The Graph](https://thegraph.com/docs/en/querying/querying-the-graph/). In dashboard, once you finish your query, fill in a test address and click 'Run' button to check if the query's return is good.
+The GraphQL query, that it must take a single wallet address as input. For more detials, please refer to [Querying The Graph](https://thegraph.com/docs/en/querying/querying-the-graph/). In dashboard, once you finish your query, fill in a test address and click 'Run' button to check if the query's response is expected.
 
 ### Expression:
 
-A JavaScript (ES6) function with this type signature: `(object) => int`. The function must be anonymous, which means that the first line of the expression should be like `function(data) {`, instead of `let expression = (data) => {`.
-
-The function should return either number 1 or 0, representing if the address is eligible for this subgraph credential. Behind the scenes, first, we send the query with the user's address to the GraphQL endpoint, and then we will apply the function against the 'data' field of the response. If the returned value is 1, then user can own this credential, otherwise not. 
-
-Once the query's output is good, click 'Run' button to check if expression processes query's output correctly.
+Expression is used to evaluate against the reponse to check if the address is eligible for the credential. 
+It is a JavaScript (ES6) function of type signature: `(object) => int`.
+The function should return either number 1 or 0, representing if the address is eligible for this subgraph credential. 
+Behind the scenes, first, we send the query with the user's address to the GraphQL endpoint, and then we will apply the function against the `data` field of the [GraphQL HTTP response](https://graphql.org/learn/serving-over-http/#response).
+If the returned value is 1, then user can own this credential, otherwise not. 
+The function must be anonymous, which means that the first line of the expression should be like `function(data) {}`, instead of `let expression = (data) => {}`.
 
 ## Subgraph Examples
 
