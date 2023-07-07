@@ -1,6 +1,6 @@
 ---
 sidebar_label: Claim Galxe NFT
-sidebar_position: 4
+sidebar_position: 5
 slug: claim-galxe-nft
 ---
 # Claim Galxe NFT
@@ -9,7 +9,7 @@ slug: claim-galxe-nft
 
 </aside>
 
-<aside> ⚠️ Claim api requires recaptcha by default, if you want to integrate, please contact Galxe to remove
+<aside> ⚠️ Claim api requires recaptcha by default, if you want to integrate, please contact Galxe.
 
 </aside>
 
