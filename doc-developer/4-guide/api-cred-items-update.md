@@ -61,7 +61,7 @@ const operation = "APPEND";
 const items = ["0x123"];
 
 // Nodejs using Axios lib
-let axiosRes = await axios.post("https://graphigo.prd.galaxy.eco/query", {
+let result = await axios.post("https://graphigo.prd.galaxy.eco/query", {
   operationName: "credentialItems",
   query: `
     mutation credentialItems($credId: ID!, $operation: Operation!, $items: [String!]!) 
@@ -89,6 +89,12 @@ let axiosRes = await axios.post("https://graphigo.prd.galaxy.eco/query", {
     }
   }
 );
-
-console.log(axiosRes.data);
+if (result.status != 200) {
+  throw new Error(result);
+} else if (result.errors && result.errors.length > 0) {
+  // NOTE: GraphQL returns 200 even if there's an error,
+  // so must explicitly check result.errors.
+  console.log(result.errors);
+  throw new Error(result.errors);
+}
 ```
