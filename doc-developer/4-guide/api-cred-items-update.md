@@ -19,11 +19,14 @@ For more information on our GraphQL endpoint, please refer to [this doc](../6-gr
 1. (header, string, mandatory) access-token: use to auth if you have access to update credential items, the user with this access token must be the credential curator
 2. (int, mandatory) credId: the credential id you want to update
 3. (enum string, mandatory) operation:
-
    1. APPEND, append items in the list.
-   2. REPLACE, remove all items and replace them with items in the list.
+   2. REPLACE (use only when there is very little addresses in total, e.g., less than 500), remove all items and replace them with items in the list. This operation is not transactional, so DO NOT use if you have a long list of addresses. It is recommended to call REMOVE first then use APPEND.
    3. REMOVE, remove items from the list.
-4. (string array, mandatory) items: items list(address or email) to be modified, refer to operation.
+5. (string array, mandatory) items: items list(address or email) to be modified, refer to operation. **The length of array must not exceed 500**.
+
+NOTE:
+Always retry when any error is returned. See below example of how to check both GraphQL and HTTP errors.
+APPEND and REMOVE are re-entrant, so it is ok to just send the query again. REPLACE is not recommended to use.
 
 ### GraphQL
 
