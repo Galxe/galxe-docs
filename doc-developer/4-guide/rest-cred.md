@@ -17,6 +17,7 @@ galxe.com                          galxe backend                                
 user_address          ---->   HTTP request based on config              ---->        Endpoint
 crendential for user  <----   Expression evaluation on response.body    <---- 
 ```
+
 We support GET and POST method:
 
 * **GET**:  Endpoint, Headers and Expression.
@@ -24,30 +25,29 @@ We support GET and POST method:
 
 ## HTTP response format requirement
 
-The response of the request, for both GET and POST, **must** a JSON where values are stored under `data` field. For example,
+The response of the request, for both GET and POST, **must** a valid JSON body. For example,
 
 ```
-// valid response 🦸
+// valid response 1 🦸
 {
     "data": {
         "is_ok": true,
     }
 }
 
-// invalid response example 1 ⛔
+// valid response 2 🦸
 {
-    "response": {
-        "is_ok": true,
-    }
+    "is_ok": true
 }
+
+// invalid response example 1 ⛔
+is_ok: true
 
 // invalid response example 2 ⛔
-{
-    "is_ok": true,
-}
+<is_ok>true</is_ok>
 ```
 
-The data field will then be extracted and passed to the Expression for evaluation.
+The entire response body will then be extracted and passed to the Expression for evaluation.
 
 ## GET
 
@@ -55,7 +55,7 @@ The data field will then be extracted and passed to the Expression for evaluatio
 
 The RESTFul style URL to which we will sent the HTTP GET request. The `$address` is the user address placeholder. You can put it on query params (`info?address=$address`) or as path variable (`/info/$address`).
 
-The response of the request **must** a JSON string where values are stored under `data` field.
+The response of the request **must** a valid JSON string.
 
 NOTE: [galxe.com](http://galxe.com) isn’t allowed.
 
@@ -68,11 +68,11 @@ NOTE: Cookie header isn’t allowed.
 ### Expression
 
 The expression is a JavaScript (ES6) function of type signature: `(object) => int`. The object that will be passed as the parameter to the function is
-the `data` object of the response.
+the entire response.
 The function should return either number 1 or 0, representing if the address is eligible for this subgraph credential. 
-Behind the scenes, first, we send the request with the user's address to the endpoint, and then we will apply the function against the 'data' field of the response. 
+Behind the scenes, first, we send the request with the user's address to the endpoint, and then we will apply the function against the entire response body.
 If the returned value is 1, then user can own this credential, otherwise not.
-The function must be anonymous, which means that the first line of the expression should be like `function(data) {}`, instead of `let expression = (data) => {}`.
+The function must be anonymous, which means that the first line of the expression should be like `function(resp) {}`, instead of `let expression = (resp) => {}`.
 
 ### Example
 
@@ -108,8 +108,8 @@ Polygon OAT Holder
 **Expression**
 
 ```javascript
-function(data) {
-  if (data.items != null && data.items.length > 0) {
+function(resp) {
+  if (resp.data.items != null && resp.data.items.length > 0) {
     return 1
   }
   return 0
@@ -122,7 +122,7 @@ function(data) {
 
 The RESTFul style URL to which we will sent the HTTP POST request. Unlike the above HTTP-GET-sourced type, no placeholder of the address is allowed in the URL.
 
-The response of the request **must** a JSON string where values are stored under `data` field.
+The response of the request **must** a valid JSON string.
 
 NOTE: [galxe.com](http://galxe.com) isn’t allowed.
 
@@ -140,11 +140,11 @@ As part of a `POST` request, a data payload can be sent to the server in the b
 
 Expression is used to evaluate against the reponse to check if the address is eligible for the credential. 
 The expression is a JavaScript (ES6) function of type signature: `(object) => int`. The object that will be passed as the parameter to the function is
-the `data` object of the response.
+the entire response.
 The function should return either number 1 or 0, representing if the address is eligible for this subgraph credential. 
-Behind the scenes, first, we send the request with the user's address to the endpoint, and then we will apply the function against the 'data' field of the response. 
+Behind the scenes, first, we send the request with the user's address to the endpoint, and then we will apply the function against the entire response body.
 If the returned value is 1, then user can own this credential, otherwise not.
-The function must be anonymous, which means that the first line of the expression should be like `function(data) {}`, instead of `let expression = (data) => {}`.
+The function must be anonymous, which means that the first line of the expression should be like `function(resp) {}`, instead of `let expression = (resp) => {}`
 
 ### Example
 
@@ -185,8 +185,8 @@ Ethereum Balancer ($ETH Balance > 0)
 **Expression**
 
 ```javascript
-function(data) {
-  if (data.result >= "0x0") {
+function(resp) {
+  if (resp.result >= "0x0") {
     return 1
   }
   return 0
