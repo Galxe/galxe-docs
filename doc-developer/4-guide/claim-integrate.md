@@ -3,7 +3,7 @@ sidebar_label: Integrate claim API
 sidebar_position: 4
 slug: claim-integrate
 ---
-# 1. Introduction
+#  1. Introduction
 
 ## 1.1. Entities Diagram
 
@@ -81,11 +81,11 @@ query {
 | id                                | Campaign id is used to identify a certain campaign                                                                                                   |
 | name                              | Campaign name                                                                                                                                        |
 | description                       | Campaign description                                                                                                                                 |
-| thumbnail                         | How many NFTs have been minted/claimed for this campaign                                                                                             |
+| thumbnail                         | The image displayed on your campaign (specific to each campaign)                                                                                     |
 | numNFTMinted                      | How many NFTs have been minted/claimed for this campaign                                                                                             |
 | startTime                         | Campaign start time in unix time                                                                                                                     |
 | endTime                           | Campaign end time in unix time, if null means no end time                                                                                            |
-| formula                           | ormula is a algebraic expression of credentials and entries, the output of formula decide whether and how many NFTs a user can claim.                |
+| formula                           | Formula is a algebraic expression of credentials and entries, the output of formula decide whether and how many NFTs a user can claim.               |
 | claimedTimes(address: $String!)   | How many times a certain address has successfully claimed in this campaign                                                                           |
 | space                             | Space is object for aggregating your campaigns. Check object fields below                                                                            |
 | nftCore                           | NFT contract that used for this campaign. Check object fields below                                                                                  |
