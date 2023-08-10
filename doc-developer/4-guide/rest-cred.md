@@ -23,6 +23,10 @@ We support GET and POST method:
 * **GET**:  Endpoint, Headers and Expression.
 * **POST**: Endpoint, Headers, Post Body and Expression
 
+In the request body, we support two placeholders:
+* **$address**: which will be replaced by the hex string of the user's address with 0x prefix, e.g., `0x95ad73...`
+* **$addressWithout0x**: which will be replaced by the hex string of the user's address without 0x prefix, e.g., `95ad73...`. Useful when constructing a `eth_call`, see example below.
+
 ## HTTP response format requirement
 
 The response of the request, for both GET and POST, **must** a valid JSON body. For example,
@@ -74,11 +78,7 @@ Behind the scenes, first, we send the request with the user's address to the end
 If the returned value is 1, then user can own this credential, otherwise not.
 The function must be anonymous, which means that the first line of the expression should be like `function(resp) {}`, instead of `let expression = (resp) => {}`.
 
-### Example
-
-**Credential**
-
-Polygon OAT Holder
+### Example: Polygon OAT Holder Credential
 
 **Endpoint**
 
@@ -146,9 +146,7 @@ Behind the scenes, first, we send the request with the user's address to the end
 If the returned value is 1, then user can own this credential, otherwise not.
 The function must be anonymous, which means that the first line of the expression should be like `function(resp) {}`, instead of `let expression = (resp) => {}`
 
-### Example
-
-**Credential**
+### Example1: ETH balance credential
 
 Ethereum Balancer ($ETH Balance > 0)
 
@@ -186,7 +184,55 @@ Ethereum Balancer ($ETH Balance > 0)
 
 ```javascript
 function(resp) {
-  if (resp.result >= "0x0") {
+  if (BigInt(resp.result) > 0) {
+    return 1
+  }
+  return 0
+}
+```
+
+### Example2: NFT holder
+
+Hold at least 1 NFT of contract 0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB, verify by using eth_call of `balance_of` function.
+
+**Endpoint**
+
+[`https://mainnet.infura.io/v3/YOUR-API-KEY`](https://mainnet.infura.io/v3/YOUR-API-KEY)
+
+**Headers: No header**
+
+**Post Body**
+
+```json
+{
+   "jsonrpc":"2.0",
+   "id":1,
+   "method":"eth_call",
+   "params":[
+      {
+         "data":"0x70a08231000000000000000000000000$addressWithout0x",
+         "to":"0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB"
+      },
+      "latest"
+   ]
+}
+```
+
+**Query Output**
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "0x00000000000000000000000000000001"
+}
+```
+
+**Expression**
+
+```javascript
+function(resp) {
+  if (BigInt(resp.result) > 0) {
     return 1
   }
   return 0
