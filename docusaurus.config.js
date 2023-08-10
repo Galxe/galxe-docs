@@ -196,7 +196,7 @@ const config = {
               },
               {
                 label: "Guides",
-                href: "https://docs.galxe.com/guide",
+                href: "https://help.galxe.com",
               },
               {
                 label: "Blog",
