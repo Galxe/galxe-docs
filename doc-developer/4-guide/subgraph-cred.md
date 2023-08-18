@@ -24,10 +24,11 @@ crendential for user  <----   Expression evaluation on response         <----
 
 It's the HTTPs endpoint where Subgraph queries go to, see the example below. 
 
-NOTE: If you saw a error when testing the API during creating a credential, check if the endpoint is a valid GraphQL
+NOTE: If you saw a error when testing the API during creating a credential, check if the endpoint is a **valid** GraphQL
 API endpoint. Common misconfigurations include 
 (1) incorrectly used a GraphQL *playground* url, that usually ends with `/graph`, 
 (2) the GraphQL endpoint does not allow CORS from galxe.com.
+(3) incorrectly used a URL to the subgraph explorer page, like `https://thegraph.com/explorer/***`. Usually, the correct endpoint from subgraph is like this `https://api.thegraph.com/subgraphs/***`
 
 ### Query:
 
