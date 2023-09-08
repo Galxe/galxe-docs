@@ -271,3 +271,141 @@ Response:
   }
 }
 ```
+
+## Space Access
+
+### User
+
+#### Query profile and credential
+
+### Credential
+
+#### Query credential items
+
+#### Update credential items
+
+### Campaign
+
+#### Query campaign participants
+
+Arguments:
+
+| Name                                                     | Type                                                | Description                                      |
+|----------------------------------------------------------|-----------------------------------------------------|--------------------------------------------------|
+| [`id`](../6-graphql-api/references/queries/campaign.mdx) | [`ID!`](../6-graphql-api/references/scalars/id.mdx) | Campaign hashid.                                 |
+| <a id="querycampaignParticipants"></a>`pfirst`           | [`Int!`](#string)                                   | Query limit.                                     |
+| <a id="querycampaignParticipants"></a>`pafter`           | [`String!`](#string)                                | Query offset.                                    |
+| <a id="querycampaignParticipants"></a>`pDownload`        | [`Boolean!`](#string)                               | Download the participant's primary address.      |
+| <a id="querycampaignParticipants"></a>`isParent`         | [`Boolean!`](#string)                               | Parent campaign, if true skip query participants |
+
+
+Request:
+
+```grapgql
+query campaignParticipants(
+  $id: ID!, 
+  $pfirst: Int!, 
+  $pafter: String!, 
+  $pDownload: Boolean!, 
+  $isParent: Boolean!) {
+  campaign(id: $id) {
+    id
+    numberID
+    numNFTMinted
+    participants @skip(if: $isParent) {
+      participants(first: $pfirst, after: $pafter, download: $pDownload) {
+        list {
+          username
+          avatar
+          address
+          email
+          solanaAddress
+          aptosAddress
+          seiAddress
+          discordUserID
+        }
+      }
+      participantsCount
+    }
+  }
+}
+```
+
+V﻿ariables:
+
+```json
+{
+  "pDownload": false,
+  "isParent": false,
+  "id": "GCn45UjHXE",
+  "pfirst": 1,
+  "pafter": "-1"
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "campaign": {
+      "id": "GCn45UjHXE",
+      "numberID": 151178,
+      "numNFTMinted": 0,
+      "participants": {
+        "participants": {
+          "list": [
+            {
+              "username": "oojojoj",
+              "avatar": "https://source.boringavatars.com/marble/120/0x00000000ccd193975907ddb660b4692bb4257f9f",
+              "address": "0x00000000ccd193975907ddb660b4692bb4257f9f",
+              "email": "",
+              "solanaAddress": "",
+              "aptosAddress": "",
+              "seiAddress": "",
+              "discordUserID": ""
+            }
+          ]
+        },
+        "participantsCount": 306409
+      }
+    }
+  }
+}
+```
+
+#### Query NFT holder by campaign
+
+#### Create campaigns
+
+#### Claim OAT campaigns on third-party website
+
+### Space
+
+#### Query campaign list
+
+#### Query NFT holder by contract
+
+#### Query leaderboard data
+
+#### Distribute loyalty points
+
+## Open Access
+
+### User
+
+#### Query profile and credential
+
+### Credential
+
+#### Query credential items
+
+### Campaign
+
+#### Query campaign participants
+
+### Space
+
+#### Query campaign list
+
+#### Query leaderboard data
