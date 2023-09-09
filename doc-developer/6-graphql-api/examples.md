@@ -6,272 +6,6 @@ sidebar_position: 3
 
 For more information on our GraphQL endpoint, please refer to [this doc](../6-graphql-api/overview.md).
 
-## Query NFT holders by EVM Contract
-
-`address`: Contract address
-
-```graphql
-query nftHolders {
-  nftCore(address: "0xc2aCEb37f0A79c4f4437Dd79507D9f4A30735a5C") {
-    holders(first: 1000, after: "") {
-      totalCount
-      pageInfo {
-        startCursor
-        endCursor
-        hasNextPage
-        hasPreviousPage
-      }
-      list {
-        address
-      }
-    }
-  }
-}
-```
-
-## Query NFT holders by Campaign
-
-`id`: Galxe campaign ID
-
-```graphql
-query nftHolders {
-  campaign(id: "GCto8UUcU9") {
-    holders(first: 1000, after: "") {
-      totalCount
-      pageInfo {
-        startCursor
-        endCursor
-        hasNextPage
-        hasPreviousPage
-      }
-      list {
-        address
-      }
-    }
-  }
-}
-```
-
-## Get Credential metadata
-
-### Subgraph type credential
-
-```graphql
-query credMetadata {
-  credential(id: 212) {
-    name
-    description
-    credType
-    chain
-    curatorAddress
-    referenceLink
-    subgraph {
-      endpoint
-      query
-      expression
-    }
-  }
-}
-```
-
-Example response:
-
-```json
-{
-  "data": {
-    "credential": {
-      "name": "Balancer Trader on Ethereum",
-      "description": "Any address that traded on Balancer V2 on Ethereum Mainnet",
-      "credType": "EVM_ADDRESS",
-      "chain": "ETHEREUM",
-      "curatorAddress": "",
-      "referenceLink": "",
-      "subgraph": {
-        "endpoint": "https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-v2",
-        "query": "query user($address: String){\n  pools(where:{address:$address})\n  {\n    id\n    address\n  }\n}\n",
-        "expression": "function(data) {\n  if (data == null || data.pools == null) {\n    return 0\n  } else if (Array.isArray(data.pools) && data.pools.length == 0) {\n    return 0\n  }\n  return 1\n}"
-      }
-    }
-  }
-}
-```
-
-### EVM Addresses type credential
-
-```graphql
-query credMetadata {
-  credential(id: 442) {
-    name
-    description
-    credType
-    chain
-    itemCount
-  }
-}
-```
-
-Example response:
-
-```json
-{
-  "data": {
-    "credential": {
-      "name": "CyberConnect Verified ",
-      "description": "**Completed Twitter Verification on CyberConnect.** \n- Head over to [app.cyberconnect.me](https://app.cyberconnect.me) and connect your wallet to access your profile. \n- On CyberConnect profile page, click on the “Verify Twitter” button and follow the ins",
-      "credType": "EVM_ADDRESS",
-      "chain": "MATIC",
-      "itemCount": 27902
-    }
-  }
-}
-```
-
-## Query NFT Metadata
-
-```graphql
-query nftMetadata {
-  nftInfo(id: 1, nftCoreAddress: "0x0062bB52986EbeaE585898E63667D9D760Ff75A0") {
-    id
-    nftCore {
-      name
-    }
-    campaign {
-      name
-      id
-      info
-    }
-    chain
-    name
-    image
-    ipfsImage
-    category
-    description
-    owner {
-      address
-    }
-    status
-    createdAt
-    createBlock
-    animationURL
-    traits {
-      displayType
-      name
-      value
-    }
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "data": {
-    "nftInfo": {
-      "id": "1",
-      "nftCore": {
-        "name": "1inch Network"
-      },
-      "campaign": {
-        "name": "1inch x Galxe NFT raffle",
-        "id": "GCk3oUU83c",
-        "info": "The legendary 1inch cyber unicorn has managed to get the powers of all the three major chains. And seems like no one can stop him from dominating the DeFi world. 5 lucky winners will be chosen randomly on August 3rd. To enter:\n\n• Follow both [@1inch](https://twitter.com/1inch) & [@GalxeHQ](https://twitter.com/GalxeHQ) on Twitter\n\n• Like and retweet this post\n\n• Reply with [#1inchNFT](https://twitter.com/hashtag/1inchNFT) hashtag"
-      },
-      "chain": "ETHEREUM",
-      "name": "1inch Cyber Unicorn",
-      "image": "https://d257b89266utxb.cloudfront.net/galaxy/images/1inch/1inch_Cyber_Unicorn.jpg",
-      "ipfsImage": "",
-      "category": "",
-      "description": "",
-      "owner": {
-        "address": "0xFfD5352e54460765CD8e74c0cc071417b4E5279A"
-      },
-      "status": "Alive",
-      "createdAt": "1628070326",
-      "createBlock": 0,
-      "animationURL": "",
-      "traits": []
-    }
-  }
-}
-```
-
-## Query user profile and credentials
-
-```graphql
-query userCredentials {
-  addressInfo(address: "0xb85b3D61439a3d70D3DF7913a3A764F352b32C55") {
-    id
-    avatar
-    username
-    eligibleCredentials(first: 10, after: "") {
-      list {
-        id
-        name
-      }
-    }
-  }
-}
-```
-
-Response:
-
-```json
-{
-  "data": {
-    "addressInfo": {
-      "id": "cAJyNCquve6qGYpV7dCk4b",
-      "avatar": "https://d257b89266utxb.cloudfront.net/galaxy/images/avatar/GrsBF2kvDW5t73fpeDYJMvK99NH9JDrr7njt5oucb5va-1649700058.png",
-      "username": "blin",
-      "eligibleCredentials": {
-        "list": [
-          {
-            "id": "472",
-            "name": "2021 NAOS Christmas Participants "
-          },
-          {
-            "id": "471",
-            "name": "2021 Christmas $Vera staker"
-          },
-          {
-            "id": "470",
-            "name": "zkLink 2021 Christmas Participants"
-          },
-          {
-            "id": "469",
-            "name": "Yearn Holiday Subscribooooor"
-          },
-          {
-            "id": "466",
-            "name": "2021 Hashflow Holiday Trader"
-          },
-          {
-            "id": "465",
-            "name": "2021 Christmas WOOFi staker"
-          },
-          {
-            "id": "464",
-            "name": "2021 Christmas $POTS Staker"
-          },
-          {
-            "id": "442",
-            "name": "CyberConnect Verified "
-          },
-          {
-            "id": "454",
-            "name": "Let’s CyberConnect"
-          },
-          {
-            "id": "455",
-            "name": "CyberConnect Dwellers"
-          }
-        ]
-      }
-    }
-  }
-}
-```
-
 ## Space Access
 
 ### User
@@ -290,30 +24,22 @@ Response:
 
 Arguments:
 
-| Name                                                     | Type                                                | Description                                      |
-|----------------------------------------------------------|-----------------------------------------------------|--------------------------------------------------|
-| [`id`](../6-graphql-api/references/queries/campaign.mdx) | [`ID!`](../6-graphql-api/references/scalars/id.mdx) | Campaign hashid.                                 |
-| <a id="querycampaignParticipants"></a>`pfirst`           | [`Int!`](#string)                                   | Query limit.                                     |
-| <a id="querycampaignParticipants"></a>`pafter`           | [`String!`](#string)                                | Query offset.                                    |
-| <a id="querycampaignParticipants"></a>`pDownload`        | [`Boolean!`](#string)                               | Download the participant's primary address.      |
-| <a id="querycampaignParticipants"></a>`isParent`         | [`Boolean!`](#string)                               | Parent campaign, if true skip query participants |
-
+| Name                                                                        | Type                                                          | Description                                      |
+|-----------------------------------------------------------------------------|---------------------------------------------------------------|--------------------------------------------------|
+| [`id`](../6-graphql-api/references/queries/campaign.mdx)                    | [`ID!`](../6-graphql-api/references/scalars/id.mdx)           | Campaign hash id.                                |
+| [`pfirst`](../6-graphql-api/references/objects/campaign-participant.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)         | Query limit.                                     |
+| [`pafter`](../6-graphql-api/references/objects/campaign-participant.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx)   | Query offset.                                    |
 
 Request:
 
-```grapgql
-query campaignParticipants(
-  $id: ID!, 
-  $pfirst: Int!, 
-  $pafter: String!, 
-  $pDownload: Boolean!, 
-  $isParent: Boolean!) {
+```graphql
+query campaignParticipants($id: ID!, $pfirst: Int!, $pafter: String!) {
   campaign(id: $id) {
     id
     numberID
     numNFTMinted
-    participants @skip(if: $isParent) {
-      participants(first: $pfirst, after: $pafter, download: $pDownload) {
+    participants {
+      participants(first: $pfirst, after: $pafter) {
         list {
           username
           avatar
@@ -331,12 +57,10 @@ query campaignParticipants(
 }
 ```
 
-V﻿ariables:
+Variables:
 
 ```json
 {
-  "pDownload": false,
-  "isParent": false,
   "id": "GCn45UjHXE",
   "pfirst": 1,
   "pafter": "-1"
@@ -367,7 +91,7 @@ Response:
             }
           ]
         },
-        "participantsCount": 306409
+        "participantsCount": 310277
       }
     }
   }
@@ -376,19 +100,570 @@ Response:
 
 #### Query NFT holder by campaign
 
+Arguments:
+
+| Name                                                                           | Type                                                        | Description       |
+|--------------------------------------------------------------------------------|-------------------------------------------------------------|-------------------|
+| [`id`](../6-graphql-api/references/queries/address-info.mdx)                   | [`ID!`](../6-graphql-api/references/scalars/id.mdx)         | Campaign hash id. |
+| [`block`](../6-graphql-api/references/objects/campaign-nftholder-snapshot.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Chain block.      |
+| [`first`](../6-graphql-api/references/objects/campaign-nftholder-snapshot.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.      |
+| [`after`](../6-graphql-api/references/objects/campaign-nftholder-snapshot.mdx) | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.     |
+
+Request:
+
+```graphql
+query NFTHolders($id: ID!, $block: Int!, $first: Int!, $after: String!) {
+  campaign(id: $id) {
+    nftHolderSnapshot{
+      holders(block: $block, first: $first, after: $after) {
+        list {
+          id
+          holder
+        }
+        totalCount
+        edges {
+          node {
+            id
+            holder
+          }
+          cursor
+        }
+        pageInfo {
+          startCursor
+          endCursor
+          hasNextPage
+          hasPreviousPage
+        }
+      }
+    }
+  }
+}       
+```
+
+Variables:
+
+```json
+{
+  "id": "GCCw3UD1eD",
+  "block": 47291627,
+  "first": 1,
+  "after": "-1"
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "campaign": {
+      "nftHolderSnapshot": {
+        "holders": {
+          "list": [
+            {
+              "id": "1",
+              "holder": "0x102daf0f0b6c5f467dc0dab22c957c412e57b4aa"
+            }
+          ],
+          "totalCount": 1,
+          "edges": [
+            {
+              "node": {
+                "id": "1",
+                "holder": "0x102daf0f0b6c5f467dc0dab22c957c412e57b4aa"
+              },
+              "cursor": "1"
+            }
+          ],
+          "pageInfo": {
+            "startCursor": "1",
+            "endCursor": "1",
+            "hasNextPage": true,
+            "hasPreviousPage": false
+          }
+        }
+      }
+    }
+  }
+}
+```
+
 #### Create campaigns
 
+Arguments:
+
+Request:
+
+Variables:
+
+Response:
+
 #### Claim OAT campaigns on third-party website
+Use GraphQL API get campaign info
+
+Request:
+```graphql
+mutation claim {
+  prepareParticipate(input: {
+    signature:  ""            # keep empty
+    campaignID: "{{campaignHashID}}" # campaign hash id
+    address:    "{{userAddr}}"  # user address
+  }) {
+    allow              # Is allow user claim nft
+    disallowReason     # Disallow reason
+  }
+} 
+```
+
+Response:
+```json
+{
+  "data": {
+    "prepareParticipate": {
+      "allow": true,
+      "disallowReason": ""
+    }
+  }
+}
+```
 
 ### Space
 
 #### Query campaign list
 
+Arguments:
+
+| Name                                                                 | Type                                                                               | Description             |
+|----------------------------------------------------------------------|------------------------------------------------------------------------------------|-------------------------|
+| [`id`](../6-graphql-api/references/queries/space.mdx)                | [`Int!`](../6-graphql-api/references/scalars/int.mdx)                              | Space id.               |
+| [`alias`](../6-graphql-api/references/objects/space.mdx)             | [`String!`](../6-graphql-api/references/scalars/string.mdx)                        | Space alias.            |
+| [`campaignInput`](../6-graphql-api/references/queries/campaigns.mdx) | [`ListCampaignInput!`](../6-graphql-api/references/inputs/list-campaign-input.mdx) | Campaigns query params. |
+
+Request:
+
+args:
+
+campaigns:[`CampaignConnection`](../6-graphql-api/references/objects/campaign-connection.mdx)
+
+```graphql
+query CampaignList($id: Int, $alias: String,  $campaignInput: ListCampaignInput!) {
+    space(id: $id, alias: $alias) {
+        id
+        name
+        alias
+        campaigns(input: $campaignInput) {
+            pageInfo {
+                endCursor
+                hasNextPage
+            }
+            list {
+                id
+                name
+            }
+        }
+    }
+}
+```
+
+Variables:
+
+```json
+{
+  "alias": "bnbchain",
+  "campaignInput": {
+    "forAdmin": false,
+    "first": 2,
+    "after": "-1",
+    "excludeChildren": true,
+    "gasTypes": null,
+    "credSources": null,
+    "rewardTypes": null,
+    "chains": null,
+    "statuses": null,
+    "listType": "Newest",
+    "types": [
+      "Drop",
+      "MysteryBox",
+      "Forge",
+      "MysteryBoxWR",
+      "Airdrop",
+      "ExternalLink",
+      "OptIn",
+      "OptInEmail",
+      "PowahDrop",
+      "Parent",
+      "Oat",
+      "Bounty",
+      "Token",
+      "DiscordRole",
+      "Mintlist",
+      "Points",
+      "PointsMysteryBox"
+    ],
+    "searchString": null
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "space": {
+      "id": "40",
+      "name": "BNB Chain",
+      "alias": "bnbchain",
+      "campaigns": {
+        "pageInfo": {
+          "endCursor": "1",
+          "hasNextPage": true
+        },
+        "list": [
+          {
+            "id": "GCU8jUP7RS",
+            "name": "BNB Chain Ecosystem Catalyst Awards -  Trailblazers"
+          },
+          {
+            "id": "GCis8Uj4gL",
+            "name": "BNB Chain 3 YA NFT "
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
 #### Query NFT holder by contract
 
+Arguments:
+
+| Name                                                          | Type                                                        | Description       |
+|---------------------------------------------------------------|-------------------------------------------------------------|-------------------|
+| [`address`](../6-graphql-api/references/queries/nft-core.mdx) | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Contract address. |
+| [`first`](../6-graphql-api/references/objects/nftcore.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.      |
+| [`after`](../6-graphql-api/references/objects/nftcore.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.     |
+
+
+Request:
+```graphql
+query nftHolders($address: String!, $first: Int!, $after: String!) {
+  nftCore(address: $address) {
+    holders(first: $first, after: $after) {
+      totalCount
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      list {
+        address
+      }
+    }
+  }
+}
+```
+
+Variables:
+```json
+{
+  "address": "0x9d3895D07bF07A791Ef8d015Ab10997D22179E5c",
+  "first": 2,
+  "after": "-1"
+}
+```
+
+Response:
+```json
+{
+  "data": {
+    "nftCore": {
+      "holders": {
+        "totalCount": 3,
+        "pageInfo": {
+          "startCursor": "0",
+          "endCursor": "1",
+          "hasNextPage": true,
+          "hasPreviousPage": false
+        },
+        "list": [
+          {
+            "address": "0x000000000A38444e0a6E37d3b630d7e855a7cb13"
+          },
+          {
+            "address": "0x00000015E180b01c40b881e10774Bc784bB6F4Eb"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
 #### Query leaderboard data
+##### Overall
+Arguments:
+
+| Name                                                        | Type                                                        | Description                                       |
+|-------------------------------------------------------------|-------------------------------------------------------------|---------------------------------------------------|
+| [`id`](../6-graphql-api/references/queries/space.mdx)       | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Space id.                                         |
+| [`first`](../6-graphql-api/references/objects/space.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.                                      |
+| [`after`](../6-graphql-api/references/objects/space.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.                                     |
+| [`order`](../6-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]()                                | Sort by Points/GalxeID.                           |
+| [`seasonId`](../6-graphql-api/references/objects/space.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query for season ranking. Overall ranking is null |
+
+
+Request:
+
+```graphql
+query SpaceLeaderboard($id: Int!, $first: Int, $after: String, $order: LoyaltyPointsRankOrder, $seasonId: Int) {
+    space(id: $id) {
+        id
+        name
+        loyaltyPointsRanks(first: $first, after: $after, order: $order, sprintId: $seasonId) {
+            pageInfo {
+                startCursor
+                endCursor
+                hasNextPage
+                hasPreviousPage
+            }
+            totalCount
+            list {
+                id
+                rank
+                points
+                space {
+                    name
+                }
+                address {
+                    username
+                    id
+                    avatar
+                    address
+                    solanaAddress
+                    aptosAddress
+                    seiAddress
+                    twitterUserName
+                    discordUserName
+                }
+            }
+        }
+    }
+}
+
+```
+
+Variables:
+
+```json
+{
+  "id": 40,
+  "first": 2,
+  "after": "-1",
+  "order": "Points",
+  "seasonId": null
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "space": {
+      "id": "40",
+      "name": "BNB Chain",
+      "loyaltyPointsRanks": {
+        "pageInfo": {
+          "startCursor": "0",
+          "endCursor": "2",
+          "hasNextPage": true,
+          "hasPreviousPage": false
+        },
+        "totalCount": 183473,
+        "list": [
+          {
+            "id": "lbrank-0L1xIfY6d1VYrlKAFOmZvT-40",
+            "rank": 1,
+            "points": 300,
+            "space": {
+              "name": "BNB Chain",
+            },
+            "address": {
+              "username": "HansaMR",
+              "id": "0L1xIfY6d1VYrlKAFOmZvT",
+              "avatar": "https://source.boringavatars.com/marble/120/0x61e305B027482358eCda2e7A56a150E0593e5cdA",
+              "address": "0x61e305b027482358ecda2e7a56a150e0593e5cda",
+              "solanaAddress": "",
+              "aptosAddress": "",
+              "seiAddress": "",
+              "twitterUserName": "",
+              "discordUserName": ""
+            }
+          },
+          {
+            "id": "lbrank-1L3UPNocTIIJid0tRIszgV-40",
+            "rank": 1,
+            "points": 300,
+            "space": {
+              "name": "BNB Chain",
+            },
+            "address": {
+              "username": "barossafeed",
+              "id": "1L3UPNocTIIJid0tRIszgV",
+              "avatar": "https://d257b89266utxb.cloudfront.net/galaxy/images/avatar/0xc3b8e4fedb31c756fae84e0c65475dcbb6ffd308-1670560267167156585.png",
+              "address": "0xc3b8e4fedb31c756fae84e0c65475dcbb6ffd308",
+              "solanaAddress": "",
+              "aptosAddress": "",
+              "seiAddress": "",
+              "twitterUserName": "",
+              "discordUserName": ""
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+##### Season
+Arguments:
+
+| Name                                                        | Type                                                        | Description               |
+|-------------------------------------------------------------|-------------------------------------------------------------|---------------------------|
+| [`id`](../6-graphql-api/references/queries/space.mdx)       | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Space id.                 |
+| [`first`](../6-graphql-api/references/objects/space.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.              |
+| [`after`](../6-graphql-api/references/objects/space.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.             |
+| [`order`](../6-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]()                                | Sort by Points/GalxeID.   |
+| [`seasonId`](../6-graphql-api/references/objects/space.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query for season ranking. |
+
+
+Request:
+
+```graphql
+query SpaceLeaderboard($id: Int!, $first: Int, $after: String, $order: LoyaltyPointsRankOrder, $seasonId: Int) {
+    space(id: $id) {
+        id
+        name
+        loyaltyPointsRanks(first: $first, after: $after, order: $order, sprintId: $seasonId) {
+            pageInfo {
+                startCursor
+                endCursor
+                hasNextPage
+                hasPreviousPage
+            }
+            totalCount
+            list {
+                id
+                rank
+                points
+                space {
+                    name
+                }
+                address {
+                    username
+                    id
+                    avatar
+                    address
+                    solanaAddress
+                    aptosAddress
+                    seiAddress
+                    twitterUserName
+                    discordUserName
+                }
+            }
+        }
+    }
+}
+
+```
+
+Variables:
+
+```json
+{
+  "id": 40,
+  "first": 2,
+  "after": "-1",
+  "order": "Points",
+  "seasonId": 1
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "space": {
+      "id": "40",
+      "name": "BNB Chain",
+      "loyaltyPointsRanks": {
+        "pageInfo": {
+          "startCursor": "0",
+          "endCursor": "2",
+          "hasNextPage": true,
+          "hasPreviousPage": false
+        },
+        "totalCount": 183473,
+        "list": [
+          {
+            "id": "lbrank-0L1xIfY6d1VYrlKAFOmZvT-40",
+            "rank": 1,
+            "points": 300,
+            "space": {
+              "name": "BNB Chain",
+            },
+            "address": {
+              "username": "HansaMR",
+              "id": "0L1xIfY6d1VYrlKAFOmZvT",
+              "avatar": "https://source.boringavatars.com/marble/120/0x61e305B027482358eCda2e7A56a150E0593e5cdA",
+              "address": "0x61e305b027482358ecda2e7a56a150e0593e5cda",
+              "solanaAddress": "",
+              "aptosAddress": "",
+              "seiAddress": "",
+              "twitterUserName": "",
+              "discordUserName": ""
+            }
+          },
+          {
+            "id": "lbrank-1L3UPNocTIIJid0tRIszgV-40",
+            "rank": 1,
+            "points": 300,
+            "space": {
+              "name": "BNB Chain",
+            },
+            "address": {
+              "username": "barossafeed",
+              "id": "1L3UPNocTIIJid0tRIszgV",
+              "avatar": "https://d257b89266utxb.cloudfront.net/galaxy/images/avatar/0xc3b8e4fedb31c756fae84e0c65475dcbb6ffd308-1670560267167156585.png",
+              "address": "0xc3b8e4fedb31c756fae84e0c65475dcbb6ffd308",
+              "solanaAddress": "",
+              "aptosAddress": "",
+              "seiAddress": "",
+              "twitterUserName": "",
+              "discordUserName": ""
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
 
 #### Distribute loyalty points
+
+Arguments:
+
+Request:
+
+Variables:
+
+Response:
 
 ## Open Access
 
@@ -404,8 +679,313 @@ Response:
 
 #### Query campaign participants
 
+Arguments:
+
+| Name                                                                        | Type                                                          | Description                                      |
+|-----------------------------------------------------------------------------|---------------------------------------------------------------|--------------------------------------------------|
+| [`id`](../6-graphql-api/references/queries/campaign.mdx)                    | [`ID!`](../6-graphql-api/references/scalars/id.mdx)           | Campaign hash id.                                |
+| [`pfirst`](../6-graphql-api/references/objects/campaign-participant.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)         | Query limit.                                     |
+| [`pafter`](../6-graphql-api/references/objects/campaign-participant.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx)   | Query offset.                                    |
+
+Request:
+
+```graphql
+query campaignParticipants($id: ID!, $pfirst: Int!, $pafter: String!) {
+  campaign(id: $id) {
+    id
+    numberID
+    numNFTMinted
+    participants {
+      participants(first: $pfirst, after: $pafter) {
+        list {
+          username
+          avatar
+          address
+          email
+          solanaAddress
+          aptosAddress
+          seiAddress
+          discordUserID
+        }
+      }
+      participantsCount
+    }
+  }
+}
+```
+
+Variables:
+
+```json
+{
+  "id": "GCn45UjHXE",
+  "pfirst": 1,
+  "pafter": "-1"
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "campaign": {
+      "id": "GCn45UjHXE",
+      "numberID": 151178,
+      "numNFTMinted": 0,
+      "participants": {
+        "participants": {
+          "list": [
+            {
+              "username": "oojojoj",
+              "avatar": "https://source.boringavatars.com/marble/120/0x00000000ccd193975907ddb660b4692bb4257f9f",
+              "address": "0x00000000ccd193975907ddb660b4692bb4257f9f",
+              "email": "",
+              "solanaAddress": "",
+              "aptosAddress": "",
+              "seiAddress": "",
+              "discordUserID": ""
+            }
+          ]
+        },
+        "participantsCount": 310277
+      }
+    }
+  }
+}
+```
+
 ### Space
 
 #### Query campaign list
 
+Arguments:
+
+| Name                                                                 | Type                                                                               | Description             |
+|----------------------------------------------------------------------|------------------------------------------------------------------------------------|-------------------------|
+| [`id`](../6-graphql-api/references/queries/space.mdx)                | [`Int!`](../6-graphql-api/references/scalars/int.mdx)                              | Space id.               |
+| [`alias`](../6-graphql-api/references/objects/space.mdx)             | [`String!`](../6-graphql-api/references/scalars/string.mdx)                        | Space alias.            |
+| [`campaignInput`](../6-graphql-api/references/queries/campaigns.mdx) | [`ListCampaignInput!`](../6-graphql-api/references/inputs/list-campaign-input.mdx) | Campaigns query params. |
+
+Request:
+
+args: 
+
+campaigns:[`CampaignConnection`](../6-graphql-api/references/objects/campaign-connection.mdx)
+
+```graphql
+query CampaignList($id: Int, $alias: String,  $campaignInput: ListCampaignInput!) {
+    space(id: $id, alias: $alias) {
+        id
+        name
+        alias
+        campaigns(input: $campaignInput) {
+            pageInfo {
+                endCursor
+                hasNextPage
+            }
+            list {
+                id
+                name
+            }
+        }
+    }
+}
+```
+
+Variables:
+
+```json
+{
+  "alias": "bnbchain",
+  "campaignInput": {
+    "forAdmin": false,
+    "first": 2,
+    "after": "-1",
+    "excludeChildren": true,
+    "gasTypes": null,
+    "credSources": null,
+    "rewardTypes": null,
+    "chains": null,
+    "statuses": null,
+    "listType": "Newest",
+    "types": [
+      "Drop",
+      "MysteryBox",
+      "Forge",
+      "MysteryBoxWR",
+      "Airdrop",
+      "ExternalLink",
+      "OptIn",
+      "OptInEmail",
+      "PowahDrop",
+      "Parent",
+      "Oat",
+      "Bounty",
+      "Token",
+      "DiscordRole",
+      "Mintlist",
+      "Points",
+      "PointsMysteryBox"
+    ],
+    "searchString": null
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "space": {
+      "id": "40",
+      "name": "BNB Chain",
+      "alias": "bnbchain",
+      "campaigns": {
+        "pageInfo": {
+          "endCursor": "1",
+          "hasNextPage": true
+        },
+        "list": [
+          {
+            "id": "GCU8jUP7RS",
+            "name": "BNB Chain Ecosystem Catalyst Awards -  Trailblazers"
+          },
+          {
+            "id": "GCis8Uj4gL",
+            "name": "BNB Chain 3 YA NFT "
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
 #### Query leaderboard data
+##### Overall
+Arguments:
+
+| Name                                                        | Type                                                        | Description                                       |
+|-------------------------------------------------------------|-------------------------------------------------------------|---------------------------------------------------|
+| [`id`](../6-graphql-api/references/queries/space.mdx)       | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Space id.                                         |
+| [`first`](../6-graphql-api/references/objects/space.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.                                      |
+| [`after`](../6-graphql-api/references/objects/space.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.                                     |
+| [`order`](../6-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]()                                | Sort by Points/GalxeID.                           |
+| [`seasonId`](../6-graphql-api/references/objects/space.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query for season ranking. Overall ranking is null |
+
+
+Request:
+
+```graphql
+query SpaceLeaderboard($id: Int!, $first: Int, $after: String, $order: LoyaltyPointsRankOrder, $seasonId: Int) {
+    space(id: $id) {
+        id
+        name
+        loyaltyPointsRanks(first: $first, after: $after, order: $order, sprintId: $seasonId) {
+            pageInfo {
+                startCursor
+                endCursor
+                hasNextPage
+                hasPreviousPage
+            }
+            totalCount
+            list {
+                id
+                rank
+                points
+                space {
+                    name
+                }
+                address {
+                    username
+                    id
+                    avatar
+                    address
+                    solanaAddress
+                    aptosAddress
+                    seiAddress
+                    twitterUserName
+                    discordUserName
+                }
+            }
+        }
+    }
+}
+
+```
+
+Variables:
+
+```json
+{
+  "id": 40,
+  "first": 2,
+  "after": "-1",
+  "order": "Points",
+  "seasonId": null
+}
+```
+
+Response:
+
+```json
+{
+  "data": {
+    "space": {
+      "id": "40",
+      "name": "BNB Chain",
+      "loyaltyPointsRanks": {
+        "pageInfo": {
+          "startCursor": "0",
+          "endCursor": "2",
+          "hasNextPage": true,
+          "hasPreviousPage": false
+        },
+        "totalCount": 183473,
+        "list": [
+          {
+            "id": "lbrank-0L1xIfY6d1VYrlKAFOmZvT-40",
+            "rank": 1,
+            "points": 300,
+            "space": {
+              "name": "BNB Chain",
+            },
+            "address": {
+              "username": "HansaMR",
+              "id": "0L1xIfY6d1VYrlKAFOmZvT",
+              "avatar": "https://source.boringavatars.com/marble/120/0x61e305B027482358eCda2e7A56a150E0593e5cdA",
+              "address": "0x61e305b027482358ecda2e7a56a150e0593e5cda",
+              "solanaAddress": "",
+              "aptosAddress": "",
+              "seiAddress": "",
+              "twitterUserName": "",
+              "discordUserName": ""
+            }
+          },
+          {
+            "id": "lbrank-1L3UPNocTIIJid0tRIszgV-40",
+            "rank": 1,
+            "points": 300,
+            "space": {
+              "name": "BNB Chain",
+            },
+            "address": {
+              "username": "barossafeed",
+              "id": "1L3UPNocTIIJid0tRIszgV",
+              "avatar": "https://d257b89266utxb.cloudfront.net/galaxy/images/avatar/0xc3b8e4fedb31c756fae84e0c65475dcbb6ffd308-1670560267167156585.png",
+              "address": "0xc3b8e4fedb31c756fae84e0c65475dcbb6ffd308",
+              "solanaAddress": "",
+              "aptosAddress": "",
+              "seiAddress": "",
+              "twitterUserName": "",
+              "discordUserName": ""
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
