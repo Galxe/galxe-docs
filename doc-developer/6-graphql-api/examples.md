@@ -192,11 +192,95 @@ Response:
 
 Arguments:
 
+| Name                                                          | Type                                                                                   | Description       |
+|---------------------------------------------------------------|----------------------------------------------------------------------------------------|-------------------|
+| [`input`](../6-graphql-api/references/mutations/campaign.mdx) | [`MutateCampaignInput!`](../6-graphql-api/references/inputs/mutate-campaign-input.mdx) | Campaign hash id. |
+
 Request:
+```graphql
+mutation addCampaign($input: MutateCampaignInput!) {
+  campaign(input: $input) {
+    id
+    numberID
+    name
+    claimEndTime
+  }
+}
+```
 
 Variables:
+```json
+{
+  "input": {
+    "daoId": 2,
+    "nftCoreId": 0,
+    "name": "eeeeee",
+    "description": "eeeeee",
+    "thumbnail": "",
+    "startTime": 1694793600,
+    "endTime": 1698336000,
+    "status": "Active",
+    "formula": "",
+    "cap": 1,
+    "gasType": "Gas",
+    "isPrivate": true,
+    "type": "Bounty",
+    "requireIntegrate": false,
+    "nftTemplates": [],
+    "tokenReward": {
+      "tokenLogo": "",
+      "tokenDecimal": "",
+      "userTokenAmount": "",
+      "tokenAddress": "",
+      "tokenSymbol": "",
+      "tokenRewardId": 0
+    },
+    "children": [],
+    "distributionType": "RAFFLE",
+    "rewardName": "ee",
+    "credentialGroups": [
+      {
+        "conditions": [
+          {
+            "expression": "true"
+          }
+        ],
+        "conditionRelation": "ALL",
+        "rewards": [
+          {
+            "expression": "5",
+            "rewardType": "LOYALTYPOINTS"
+          },
+          {
+            "expression": "1",
+            "rewardType": "CUSTOM"
+          }
+        ],
+        "credentials": []
+      }
+    ],
+    "taskConfig": {
+      "rewardConfigs": []
+    },
+    "rewardType": "EVM",
+    "rewardInfo": {}
+  }
+}
+```
 
 Response:
+```json
+{
+  "data": {
+    "campaign": {
+      "id": "GCFEXUtxc1",
+      "numberID": 5448,
+      "name": "eeeeee",
+      "claimEndTime": null
+    }
+  }
+}
+```
 
 #### Claim OAT campaigns on third-party website
 Use GraphQL API get campaign info
