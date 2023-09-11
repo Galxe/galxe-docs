@@ -774,6 +774,13 @@ mutation UpdateAccessToken($input: UpdateAccessTokenInput!) {
 
 Task Creation
 
+Header:
+```json
+{
+  "accessToken": "your-access-token"
+}
+```
+
 Request:
 
 ```graphql
@@ -820,6 +827,13 @@ Response
 
 Task Modification
 
+Header:
+```json
+{
+  "accessToken": "your-access-token"
+}
+```
+
 Request:
 
 ```graphql
@@ -847,6 +861,13 @@ Response:
 ```
 
 Task Deletion
+
+Header:
+```json
+{
+  "accessToken": "your-access-token"
+}
+```
 
 Request:
 
