@@ -8,21 +8,21 @@ slug: api-examples
 
 For more information on our GraphQL endpoint, please refer to [this doc](../6-graphql-api/overview.md).
 
-## Space Access
+## Space Access:
 
-### User
+## User
 
-#### Query profile and credential
+### Query profile and credential
 
-### Credential
+## Credential
 
-#### Query credential items
+### Query credential items
 
-#### Update credential items
+### Update credential items
 
-### Campaign
+## Campaign
 
-#### Query campaign participants
+### Query campaign participants
 
 Arguments:
 
@@ -100,7 +100,7 @@ Response:
 }
 ```
 
-#### Query NFT holder by campaign
+### Query NFT holder by campaign
 
 Arguments:
 
@@ -190,7 +190,7 @@ Response:
 }
 ```
 
-#### Create campaigns
+### Create campaigns
 
 Arguments:
 
@@ -284,7 +284,7 @@ Response:
 }
 ```
 
-#### Claim OAT campaigns on third-party website
+### Claim OAT campaigns on third-party website
 Use GraphQL API get campaign info
 
 Request:
@@ -313,9 +313,9 @@ Response:
 }
 ```
 
-### Space
+## Space
 
-#### Query campaign list
+### Query campaign list
 
 Arguments:
 
@@ -327,9 +327,7 @@ Arguments:
 
 Request:
 
-args:
-
-campaigns:[`CampaignConnection`](../6-graphql-api/references/objects/campaign-connection.mdx)
+args:campaigns:[`CampaignConnection`](../6-graphql-api/references/objects/campaign-connection.mdx)
 
 ```graphql
 query CampaignList($id: Int, $alias: String,  $campaignInput: ListCampaignInput!) {
@@ -421,7 +419,7 @@ Response:
 }
 ```
 
-#### Query NFT holder by contract
+### Query NFT holder by contract
 
 Arguments:
 
@@ -488,8 +486,8 @@ Response:
 }
 ```
 
-#### Query leaderboard data
-##### Overall
+### Query leaderboard data
+#### Overall
 Arguments:
 
 | Name                                                        | Type                                                        | Description                                       |
@@ -497,7 +495,7 @@ Arguments:
 | [`id`](../6-graphql-api/references/queries/space.mdx)       | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Space id.                                         |
 | [`first`](../6-graphql-api/references/objects/space.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.                                      |
 | [`after`](../6-graphql-api/references/objects/space.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.                                     |
-| [`order`](../6-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]()                                | Sort by Points/GalxeID.                           |
+| [`order`](../6-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]                                  | Sort by Points/GalxeID.                           |
 | [`seasonId`](../6-graphql-api/references/objects/space.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query for season ranking. Overall ranking is null |
 
 
@@ -615,7 +613,7 @@ Response:
 }
 ```
 
-##### Season
+#### Season
 Arguments:
 
 | Name                                                        | Type                                                        | Description               |
@@ -623,7 +621,7 @@ Arguments:
 | [`id`](../6-graphql-api/references/queries/space.mdx)       | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Space id.                 |
 | [`first`](../6-graphql-api/references/objects/space.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.              |
 | [`after`](../6-graphql-api/references/objects/space.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.             |
-| [`order`](../6-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]()                                | Sort by Points/GalxeID.   |
+| [`order`](../6-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]                                  | Sort by Points/GalxeID.   |
 | [`seasonId`](../6-graphql-api/references/objects/space.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query for season ranking. |
 
 
@@ -741,7 +739,7 @@ Response:
 }
 ```
 
-#### Distribute loyalty points
+### Distribute loyalty points
 
 Prerequisite:
 generate an access token
@@ -900,19 +898,19 @@ Response:
 ```
 
 
-## Open Access
+## Open Access:
 
-### User
+## User
 
-#### Query profile and credential
+### Query profile and credential
 
-### Credential
+## Credential
 
-#### Query credential items
+### Query credential items
 
-### Campaign
+## Campaign
 
-#### Query campaign participants
+### Query campaign participants
 
 Arguments:
 
@@ -990,9 +988,9 @@ Response:
 }
 ```
 
-### Space
+## Space
 
-#### Query campaign list
+### Query campaign list
 
 Arguments:
 
@@ -1098,8 +1096,8 @@ Response:
 }
 ```
 
-#### Query leaderboard data
-##### Overall
+### Query leaderboard data
+#### Overall
 Arguments:
 
 | Name                                                        | Type                                                        | Description                                       |
@@ -1107,7 +1105,7 @@ Arguments:
 | [`id`](../6-graphql-api/references/queries/space.mdx)       | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Space id.                                         |
 | [`first`](../6-graphql-api/references/objects/space.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.                                      |
 | [`after`](../6-graphql-api/references/objects/space.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.                                     |
-| [`order`](../6-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]()                                | Sort by Points/GalxeID.                           |
+| [`order`](../6-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]                                  | Sort by Points/GalxeID.                           |
 | [`seasonId`](../6-graphql-api/references/objects/space.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query for season ranking. Overall ranking is null |
 
 
