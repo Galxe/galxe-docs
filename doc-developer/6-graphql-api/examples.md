@@ -743,13 +743,141 @@ Response:
 
 #### Distribute loyalty points
 
-Arguments:
+Prerequisite:
+generate an access token
+
+```graphql
+mutation UpdateAccessToken($input: UpdateAccessTokenInput!) {
+  updateAccessToken(input: $input) {
+    accessToken
+  }
+}
+```
+
+```json
+{
+  "input": {
+    "address": "0x39b36ff83b60eb54d71758cffa3ab17d2d0b216c"
+  }
+}
+```
+
+```json
+{
+    "data": {
+        "updateAccessToken": {
+            "accessToken": "your-access-token"
+        }
+    }
+}
+```
+
+Task Creation
 
 Request:
 
-Variables:
+```graphql
+mutation createTask {
+  createTailoredTask(input: {
+    title: "Connect to Galxe"
+    description: "A user who connected to Galxe.com"
+    link: "your_link"
+    spaceId: 2
+    tag: Once
+    points: 10
+    startTime: 0
+  }) {
+    id
+    title
+    description
+    link
+    spaceId
+    tag
+    points
+    startTime
+  }
+}
+```
+
+Response
+
+```graphql
+{
+  "data": {
+    "createTailoredTask": {
+      "id": "26",
+      "title": "Connect to Galxe",
+      "description": "A user who connected to Galxe.com",
+      "link": "your_link",
+      "spaceId": 2,
+      "tag": "Once",
+      "points": 10,
+      "startTime": 0
+    }
+  }
+}
+```
+
+Task Modification
+
+Request:
+
+```graphql
+mutation updateTask {
+  updateTailoredTask(input: {
+    id: 26
+    title: "update task title"
+    description: "desc"
+    link: "your_link",
+    points: 10
+    tag: Once,
+    startTime: 0
+  })
+}
+```
 
 Response:
+
+```graphql
+{
+  "data": {
+    "updateTailoredTask": true
+  }
+}
+```
+
+Task Deletion
+
+Request:
+
+```graphql
+mutation deleteTask {
+  deleteTailoredTask(id: 26)
+}
+```
+
+Distributing Points via API
+
+Request:
+
+```graphql
+mutation {
+  claimTailoredTaskLoyaltyPoints(
+      id: 25, 
+      addresses:["0x447D24B00937BCc3fE5768c828fb2fae52c3e8C5", "0xaC1F963Ed7454d0D3295786E4Bcc47B961918C63"])
+}
+```
+
+Response:
+
+```graphql
+{
+  "data": {
+    "claimTailoredTaskLoyaltyPoints": true
+  }
+}
+```
+
 
 ## Open Access
 
