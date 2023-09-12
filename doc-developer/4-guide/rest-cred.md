@@ -27,6 +27,8 @@ In the request body, we support two placeholders:
 * **$address**: which will be replaced by the hex string of the user's address with 0x prefix, e.g., `0x95ad73...`
 * **$addressWithout0x**: which will be replaced by the hex string of the user's address without 0x prefix, e.g., `95ad73...`. Useful when constructing a `eth_call`, see example below.
 
+Please note that for addresses encoded with case-insensitive schema, like EVM and aptos addresses that are 0x-prefixed hex string, addresses will be **lowercased** before sending to the endpoint.
+
 ## HTTP response format requirement
 
 The response of the request, for both GET and POST, **must** a valid JSON body. For example,
