@@ -10,16 +10,6 @@ For more information on our GraphQL endpoint, please refer to [this doc](../6-gr
 
 ## Space Access:
 
-## User
-
-### Query profile and credential
-
-## Credential
-
-### Query credential items
-
-### Update credential items
-
 ## Campaign
 
 ### Query campaign participants
@@ -897,6 +887,39 @@ Response:
 }
 ```
 
+## Credential
+
+### Query credential items
+
+Header:
+```json
+{
+  "accessToken": "your-access-token"
+}
+```
+
+```graphql
+query CredItems($id: ID!, $first: Int, $after: String, $searchString: String) {
+  credential(id: $id) {
+    id
+    itemCount
+    credentialItems(first: $first, after: $after, searchString: $searchString) {
+      totalCount
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      list
+    }
+  }
+}
+```
+
+example variables:
+
+```
+{id: "2544", first: 500, after: ""}
+```
 
 ## Open Access:
 
@@ -904,9 +927,80 @@ Response:
 
 ### Query profile and credential
 
+
+```graphql
+query ProfileCredentials($address: String!, $first: Int, $after: String) {
+  addressInfo(address: $address) {
+    addressEligibleCredentials(first: $first, after: $after) {
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      totalCount
+      list {
+        id
+        name
+      }
+    }
+  }
+}
+```
+
 ## Credential
 
-### Query credential items
+### Get credential value
+
+Depends on `credSource`, metadata field should use corresponding field.
+
+E.g. if `credSource` is `SPACE_USER`, then the query should look like the following:
+
+```graphql
+query credential($id: ID!, $eligibleAddress: String!) {
+  credential(id: $id, eligibleAddress: $eligibleAddress) {
+    name
+    credSource
+    dimensionConfig
+    metadata {
+      spaceUsers {
+        spaceId
+        schema {
+          follow {
+            id
+            description
+            title
+            type
+          }
+          points {
+            id
+            description
+            title
+            type
+          }
+          participations {
+            id
+            description
+            title
+            type
+          }
+        }
+        defaultValue {
+          follow
+          points
+          participations
+        }
+      }
+    }
+    value {
+      address
+      spaceUsers {
+        follow
+        points
+        participations
+      }
+    }
+  }
+}
+```
 
 ## Campaign
 
