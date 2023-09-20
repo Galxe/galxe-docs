@@ -107,3 +107,10 @@ function(resp) {
 ```
 1
 ```
+
+## FAQ: Users getting 403 error?
+Make sure the endpoint has whitelisted our server:
+```
+44.240.68.227
+35.81.233.163
+```
