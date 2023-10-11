@@ -40,8 +40,14 @@ https://galxe.com/oauth?client_id=${CLIENT-ID}&scope=${SCOPE}&redirect_uri=${RED
 * Twitter
 * Discord
 * Github
+* Telegram
 * EVMAddress
 * SolanaAddress
+* SeiAddress
+* AptosAddress
+* InjectiveAddress
+* FlowAddress
+* GalxeID
 
 #### Parameters
 
