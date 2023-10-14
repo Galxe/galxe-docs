@@ -1,6 +1,6 @@
 ---
-sidebar_label: How to setup a Subgraph or GraphQL-sourced credential
-sidebar_position: 2
+sidebar_label: How to setup a pull-based SubGraph or GraphQL-sourced credential
+sidebar_position: 3
 slug: subgraph-cred
 ---
 # How to setup a Subgraph or GraphQL-sourced credential

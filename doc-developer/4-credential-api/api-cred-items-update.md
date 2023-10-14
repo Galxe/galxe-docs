@@ -1,9 +1,12 @@
 ---
-sidebar_label: Use API to update credential Items
+sidebar_label: How to setup push-based API credential
 sidebar_position: 1
 slug: api-cred-items-update
 ---
+
 # Use API to update credential Items
+
+API credential allows you to push credential data to Galxe for your users.
 
 ## Prerequisite
 
@@ -11,8 +14,6 @@ slug: api-cred-items-update
 2. Then you will need an access token bound to your wallet address to use this API. Please go to the Galxe user setting page to generate an access token.
 
 ## Endpoint
-
-For more information on our GraphQL endpoint, please refer to [this doc](../6-graphql-api/overview.md).
 
 ## Input
 
@@ -22,7 +23,7 @@ For more information on our GraphQL endpoint, please refer to [this doc](../6-gr
    1. APPEND, append items in the list.
    2. REPLACE (use only when there is very little addresses in total, e.g., less than 500), remove all items and replace them with items in the list. This operation is not transactional, so DO NOT use if you have a long list of addresses. It is recommended to call REMOVE first then use APPEND.
    3. REMOVE, remove items from the list.
-5. (string array, mandatory) items: items list(address or email) to be modified, refer to operation. **The length of array must not exceed 500**.
+4. (string array, mandatory) items: items list(address or email) to be modified, refer to operation. **The length of array must not exceed 500**.
 
 NOTE:
 Always retry when any error is returned. See below example of how to check both GraphQL and HTTP errors.

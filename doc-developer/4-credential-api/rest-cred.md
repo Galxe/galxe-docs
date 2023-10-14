@@ -1,6 +1,6 @@
 ---
-sidebar_label: How to set a REST credential through dashboard
-sidebar_position: 3
+sidebar_label: How to setup a pull-based RESTful API credential
+sidebar_position: 2
 slug: rest-cred
 ---
 # How to set a REST credential through dashboard

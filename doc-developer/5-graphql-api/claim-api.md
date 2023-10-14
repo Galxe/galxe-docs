@@ -15,7 +15,7 @@ slug: claim-galxe-nft
 
 ## Claim OAT:
 
-GraphQL API: [here](../6-graphql-api/overview.md)
+GraphQL API: [here](../5-graphql-api/overview.md)
 
 ### 1. Get Campaign Info:
 
@@ -53,7 +53,7 @@ Response: claim success
 
 ## Claim Gas Campaign NFT:
 
-GraphQL API: [here](../6-graphql-api/overview.md)
+GraphQL API: [here](../5-graphql-api/overview.md)
 
 SpaceStation: store campaign fee and claim NFT smart contract
 

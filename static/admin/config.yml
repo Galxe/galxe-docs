@@ -259,7 +259,7 @@ collections:
   - name: developer_graphql-api
     label: "developer/graphql-api"
     description: "description"
-    folder: doc-developer/6-graphql-api
+    folder: doc-developer/5-graphql-api
     identifier_field: sidebar_position
     summary: "{{sidebar_position}} - {{sidebar_label}}"
     extension: md

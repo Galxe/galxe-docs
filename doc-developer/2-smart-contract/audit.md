@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+sidebar_label: Audit Reports
+sidebar_position: 3
 ---
 
 # Smart Contract Audits

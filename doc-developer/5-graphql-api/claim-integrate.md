@@ -52,7 +52,7 @@ Formula is a algebraic expression of credentials and entries, the output of form
 
 ## 2.1. Overview
 
-For endpoint and other info, please refer to [Overview | Galxe Docs](../6-graphql-api/overview.md).
+For endpoint and other info, please refer to [Overview | Galxe Docs](../5-graphql-api/overview.md).
 
 And for interface of each GraphQL query, please check docs/schema from [Playground - https://graphigo.prd.galaxy.eco/query](https://graphigo.prd.galaxy.eco/) .
 

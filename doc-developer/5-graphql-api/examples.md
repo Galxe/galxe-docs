@@ -5,7 +5,7 @@ slug: api-examples
 ---
 # Examples
 
-For more information on our GraphQL endpoint, please refer to [this doc](../6-graphql-api/overview.md).
+For more information on our GraphQL endpoint, please refer to [this doc](../5-graphql-api/overview.md).
 
 # Space Access:
 
@@ -17,9 +17,9 @@ Arguments:
 
 | Name                                                                     | Type                                                        | Description       |
 | ------------------------------------------------------------------------ | ----------------------------------------------------------- | ----------------- |
-| [`id`](../6-graphql-api/references/queries/campaign.mdx)                 | [`ID!`](../6-graphql-api/references/scalars/id.mdx)         | Campaign hash id. |
-| [`pfirst`](../6-graphql-api/references/objects/campaign-participant.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.      |
-| [`pafter`](../6-graphql-api/references/objects/campaign-participant.mdx) | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.     |
+| [`id`](../5-graphql-api/references/queries/campaign.mdx)                 | [`ID!`](../5-graphql-api/references/scalars/id.mdx)         | Campaign hash id. |
+| [`pfirst`](../5-graphql-api/references/objects/campaign-participant.mdx) | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Query limit.      |
+| [`pafter`](../5-graphql-api/references/objects/campaign-participant.mdx) | [`String!`](../5-graphql-api/references/scalars/string.mdx) | Query offset.     |
 
 Request:
 
@@ -95,10 +95,10 @@ Arguments:
 
 | Name                                                                           | Type                                                        | Description       |
 | ------------------------------------------------------------------------------ | ----------------------------------------------------------- | ----------------- |
-| [`id`](../6-graphql-api/references/queries/address-info.mdx)                   | [`ID!`](../6-graphql-api/references/scalars/id.mdx)         | Campaign hash id. |
-| [`block`](../6-graphql-api/references/objects/campaign-nftholder-snapshot.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Chain block.      |
-| [`first`](../6-graphql-api/references/objects/campaign-nftholder-snapshot.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.      |
-| [`after`](../6-graphql-api/references/objects/campaign-nftholder-snapshot.mdx) | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.     |
+| [`id`](../5-graphql-api/references/queries/address-info.mdx)                   | [`ID!`](../5-graphql-api/references/scalars/id.mdx)         | Campaign hash id. |
+| [`block`](../5-graphql-api/references/objects/campaign-nftholder-snapshot.mdx) | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Chain block.      |
+| [`first`](../5-graphql-api/references/objects/campaign-nftholder-snapshot.mdx) | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Query limit.      |
+| [`after`](../5-graphql-api/references/objects/campaign-nftholder-snapshot.mdx) | [`String!`](../5-graphql-api/references/scalars/string.mdx) | Query offset.     |
 
 Request:
 
@@ -128,7 +128,7 @@ query NFTHolders($id: ID!, $block: Int!, $first: Int!, $after: String!) {
       }
     }
   }
-}       
+}
 ```
 
 Variables:
@@ -185,7 +185,7 @@ Arguments:
 
 | Name                                                          | Type                                                                                   | Description       |
 | ------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ----------------- |
-| [`input`](../6-graphql-api/references/mutations/campaign.mdx) | [`MutateCampaignInput!`](../6-graphql-api/references/inputs/mutate-campaign-input.mdx) | Campaign hash id. |
+| [`input`](../5-graphql-api/references/mutations/campaign.mdx) | [`MutateCampaignInput!`](../5-graphql-api/references/inputs/mutate-campaign-input.mdx) | Campaign hash id. |
 
 Request:
 
@@ -316,13 +316,13 @@ Arguments:
 
 | Name                                                                 | Type                                                                               | Description             |
 | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------------- |
-| [`id`](../6-graphql-api/references/queries/space.mdx)                | [`Int!`](../6-graphql-api/references/scalars/int.mdx)                              | Space id.               |
-| [`alias`](../6-graphql-api/references/objects/space.mdx)             | [`String!`](../6-graphql-api/references/scalars/string.mdx)                        | Space alias.            |
-| [`campaignInput`](../6-graphql-api/references/queries/campaigns.mdx) | [`ListCampaignInput!`](../6-graphql-api/references/inputs/list-campaign-input.mdx) | Campaigns query params. |
+| [`id`](../5-graphql-api/references/queries/space.mdx)                | [`Int!`](../5-graphql-api/references/scalars/int.mdx)                              | Space id.               |
+| [`alias`](../5-graphql-api/references/objects/space.mdx)             | [`String!`](../5-graphql-api/references/scalars/string.mdx)                        | Space alias.            |
+| [`campaignInput`](../5-graphql-api/references/queries/campaigns.mdx) | [`ListCampaignInput!`](../5-graphql-api/references/inputs/list-campaign-input.mdx) | Campaigns query params. |
 
 Request:
 
-args:campaigns:[`CampaignConnection`](../6-graphql-api/references/objects/campaign-connection.mdx)
+args:campaigns:[`CampaignConnection`](../5-graphql-api/references/objects/campaign-connection.mdx)
 
 ```graphql
 query CampaignList($id: Int, $alias: String,  $campaignInput: ListCampaignInput!) {
@@ -420,9 +420,9 @@ Arguments:
 
 | Name                                                          | Type                                                        | Description       |
 | ------------------------------------------------------------- | ----------------------------------------------------------- | ----------------- |
-| [`address`](../6-graphql-api/references/queries/nft-core.mdx) | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Contract address. |
-| [`first`](../6-graphql-api/references/objects/nftcore.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.      |
-| [`after`](../6-graphql-api/references/objects/nftcore.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.     |
+| [`address`](../5-graphql-api/references/queries/nft-core.mdx) | [`String!`](../5-graphql-api/references/scalars/string.mdx) | Contract address. |
+| [`first`](../5-graphql-api/references/objects/nftcore.mdx)    | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Query limit.      |
+| [`after`](../5-graphql-api/references/objects/nftcore.mdx)    | [`String!`](../5-graphql-api/references/scalars/string.mdx) | Query offset.     |
 
 Request:
 
@@ -491,11 +491,11 @@ Arguments:
 
 | Name                                                        | Type                                                        | Description                                       |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------- |
-| [`id`](../6-graphql-api/references/queries/space.mdx)       | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Space id.                                         |
-| [`first`](../6-graphql-api/references/objects/space.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.                                      |
-| [`after`](../6-graphql-api/references/objects/space.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.                                     |
-| [`order`](../6-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]                                  | Sort by Points/GalxeID.                           |
-| [`seasonId`](../6-graphql-api/references/objects/space.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query for season ranking. Overall ranking is null |
+| [`id`](../5-graphql-api/references/queries/space.mdx)       | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Space id.                                         |
+| [`first`](../5-graphql-api/references/objects/space.mdx)    | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Query limit.                                      |
+| [`after`](../5-graphql-api/references/objects/space.mdx)    | [`String!`](../5-graphql-api/references/scalars/string.mdx) | Query offset.                                     |
+| [`order`](../5-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]                                  | Sort by Points/GalxeID.                           |
+| [`seasonId`](../5-graphql-api/references/objects/space.mdx) | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Query for season ranking. Overall ranking is null |
 
 Request:
 
@@ -616,11 +616,11 @@ Arguments:
 
 | Name                                                        | Type                                                        | Description               |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ------------------------- |
-| [`id`](../6-graphql-api/references/queries/space.mdx)       | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Space id.                 |
-| [`first`](../6-graphql-api/references/objects/space.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.              |
-| [`after`](../6-graphql-api/references/objects/space.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.             |
-| [`order`](../6-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]                                  | Sort by Points/GalxeID.   |
-| [`seasonId`](../6-graphql-api/references/objects/space.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query for season ranking. |
+| [`id`](../5-graphql-api/references/queries/space.mdx)       | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Space id.                 |
+| [`first`](../5-graphql-api/references/objects/space.mdx)    | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Query limit.              |
+| [`after`](../5-graphql-api/references/objects/space.mdx)    | [`String!`](../5-graphql-api/references/scalars/string.mdx) | Query offset.             |
+| [`order`](../5-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]                                  | Sort by Points/GalxeID.   |
+| [`seasonId`](../5-graphql-api/references/objects/space.mdx) | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Query for season ranking. |
 
 Request:
 
@@ -881,7 +881,7 @@ Request:
 ```graphql
 mutation {
   claimTailoredTaskLoyaltyPoints(
-      id: 25, 
+      id: 25,
       addresses:["0x447D24B00937BCc3fE5768c828fb2fae52c3e8C5", "0xaC1F963Ed7454d0D3295786E4Bcc47B961918C63"])
 }
 ```
@@ -1019,9 +1019,9 @@ Arguments:
 
 | Name                                                                     | Type                                                        | Description       |
 | ------------------------------------------------------------------------ | ----------------------------------------------------------- | ----------------- |
-| [`id`](../6-graphql-api/references/queries/campaign.mdx)                 | [`ID!`](../6-graphql-api/references/scalars/id.mdx)         | Campaign hash id. |
-| [`pfirst`](../6-graphql-api/references/objects/campaign-participant.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.      |
-| [`pafter`](../6-graphql-api/references/objects/campaign-participant.mdx) | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.     |
+| [`id`](../5-graphql-api/references/queries/campaign.mdx)                 | [`ID!`](../5-graphql-api/references/scalars/id.mdx)         | Campaign hash id. |
+| [`pfirst`](../5-graphql-api/references/objects/campaign-participant.mdx) | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Query limit.      |
+| [`pafter`](../5-graphql-api/references/objects/campaign-participant.mdx) | [`String!`](../5-graphql-api/references/scalars/string.mdx) | Query offset.     |
 
 Request:
 
@@ -1099,15 +1099,15 @@ Arguments:
 
 | Name                                                                 | Type                                                                               | Description             |
 | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------------- |
-| [`id`](../6-graphql-api/references/queries/space.mdx)                | [`Int!`](../6-graphql-api/references/scalars/int.mdx)                              | Space id.               |
-| [`alias`](../6-graphql-api/references/objects/space.mdx)             | [`String!`](../6-graphql-api/references/scalars/string.mdx)                        | Space alias.            |
-| [`campaignInput`](../6-graphql-api/references/queries/campaigns.mdx) | [`ListCampaignInput!`](../6-graphql-api/references/inputs/list-campaign-input.mdx) | Campaigns query params. |
+| [`id`](../5-graphql-api/references/queries/space.mdx)                | [`Int!`](../5-graphql-api/references/scalars/int.mdx)                              | Space id.               |
+| [`alias`](../5-graphql-api/references/objects/space.mdx)             | [`String!`](../5-graphql-api/references/scalars/string.mdx)                        | Space alias.            |
+| [`campaignInput`](../5-graphql-api/references/queries/campaigns.mdx) | [`ListCampaignInput!`](../5-graphql-api/references/inputs/list-campaign-input.mdx) | Campaigns query params. |
 
 Request:
 
-args: 
+args:
 
-campaigns:[`CampaignConnection`](../6-graphql-api/references/objects/campaign-connection.mdx)
+campaigns:[`CampaignConnection`](../5-graphql-api/references/objects/campaign-connection.mdx)
 
 ```graphql
 query CampaignList($id: Int, $alias: String,  $campaignInput: ListCampaignInput!) {
@@ -1207,11 +1207,11 @@ Arguments:
 
 | Name                                                        | Type                                                        | Description                                       |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------- |
-| [`id`](../6-graphql-api/references/queries/space.mdx)       | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Space id.                                         |
-| [`first`](../6-graphql-api/references/objects/space.mdx)    | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query limit.                                      |
-| [`after`](../6-graphql-api/references/objects/space.mdx)    | [`String!`](../6-graphql-api/references/scalars/string.mdx) | Query offset.                                     |
-| [`order`](../6-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]                                  | Sort by Points/GalxeID.                           |
-| [`seasonId`](../6-graphql-api/references/objects/space.mdx) | [`Int!`](../6-graphql-api/references/scalars/int.mdx)       | Query for season ranking. Overall ranking is null |
+| [`id`](../5-graphql-api/references/queries/space.mdx)       | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Space id.                                         |
+| [`first`](../5-graphql-api/references/objects/space.mdx)    | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Query limit.                                      |
+| [`after`](../5-graphql-api/references/objects/space.mdx)    | [`String!`](../5-graphql-api/references/scalars/string.mdx) | Query offset.                                     |
+| [`order`](../5-graphql-api/references/objects/space.mdx)    | [`LoyaltyPointsRankOrder`]                                  | Sort by Points/GalxeID.                           |
+| [`seasonId`](../5-graphql-api/references/objects/space.mdx) | [`Int!`](../5-graphql-api/references/scalars/int.mdx)       | Query for season ranking. Overall ranking is null |
 
 Request:
 
