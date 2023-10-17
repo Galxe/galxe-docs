@@ -291,6 +291,49 @@ const config = {
         docsDir: "doc-developer",
       },
     ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/developer',
+            from: '/developer/getting-started/showcase',
+          },
+          {
+            to: '/developer',
+            from: '/developer/getting-started/support-and-feedback',
+          },
+          {
+            to: '/developer/galxe-id-integration/galxe-id-oauth',
+            from: '/developer/integration/galxe-id-sdk',
+          },
+          {
+            to: '/developer/smart-contract/audit',
+            from: '/developer/security/audit',
+          },
+          {
+            to: '/developer/credential-api/api-cred-items-update',
+            from: '/developer/guide/api-cred-items-update',
+          },
+          {
+            to: '/developer/credential-api/subgraph-cred',
+            from: '/developer/guide/subgraph-cred',
+          },
+          {
+            to: '/developer/credential-api/rest-cred',
+            from: '/developer/guide/rest-cred',
+          },
+          {
+            to: '/developer/graphql-api/claim-integrate',
+            from: '/developer/guide/claim-integrate',
+          },
+          {
+            to: '/developer/graphql-api/claim-galxe-nft',
+            from: '/developer/guide/claim-galxe-nft',
+          }
+        ],
+     },
+    ]
   ],
 };
 
