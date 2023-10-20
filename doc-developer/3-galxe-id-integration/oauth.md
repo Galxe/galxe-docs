@@ -6,6 +6,10 @@ slug: galxe-id-oauth
 
 # Galxe ID OAuth 2.0
 
+## Demo
+
+Please see the [Demo](https://demo.tian.fyi/) and its [source code](https://github.com/oyyblin/galxe-id-sdk-oauth-demo).
+
 ## Getting Started
 
 To get started, please apply for a client ID by contacting our live chat support from your dashboard management page.
