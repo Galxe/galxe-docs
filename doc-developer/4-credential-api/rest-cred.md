@@ -23,7 +23,12 @@ We support GET and POST method:
 * **GET**:  Endpoint, Headers and Expression.
 * **POST**: Endpoint, Headers, Post Body and Expression
 
+For security reasons, you must add Galxe.com to the API server's [Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) header to avoid [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) issues. We will perform a [CORS check](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS#preflighted_requests_in_cors) during the creation process, and if it's not included, the creation will fail.
+
+And we require that requests must be responded to within 5 seconds; otherwise, we will cancel the request.
+
 In the request body, we support two placeholders:
+
 * **$address**: which will be replaced by the hex string of the user's address with 0x prefix, e.g., `0x95ad73...`
 * **$addressWithout0x**: which will be replaced by the hex string of the user's address without 0x prefix, e.g., `95ad73...`. Useful when constructing a `eth_call`, see example below.
 
@@ -242,10 +247,13 @@ function(resp) {
 ```
 
 ## FAQ: Cannot test response on Galxe because of CORS?
+
 [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a security check of browser. If your API does not add `galxe.com` to the `Access-Control-Allow-Origin` header of the response, you cannot run the 'test' on Galxe website. Although it will not affect verification, because our backend will no check CORS header, it is recommended to add `galxe.com` to the CORS list.Otherwise, you will have to disable CORS in your browser to run the test, e.g., using plugins like [this](https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino).
 
 ## FAQ: Users getting 403 error?
+
 Make sure the endpoint has whitelisted our server:
+
 ```
 44.240.68.227
 35.81.233.163
