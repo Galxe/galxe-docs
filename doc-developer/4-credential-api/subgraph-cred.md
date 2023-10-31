@@ -24,7 +24,7 @@ crendential for user  <----   Expression evaluation on response         <----
 
 It's the HTTPs endpoint where Subgraph queries go to, see the example below. 
 
-**For security reasons, you must add Galxe.com to the GraphQL server's [Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) header to avoid [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) issues. We will perform a [CORS check](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS#preflighted_requests_in_cors) during the creation process, and if it's not included, the creation will fail.**
+**For security reasons, you must add *https://galxe.com* to the GraphQL server's [Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) header to avoid [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) issues. We will perform a [CORS check](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS#preflighted_requests_in_cors) during the creation process, and if it's not included, the creation will fail.**
 
 **And we require that requests must be responded to within 5 seconds; otherwise, we will cancel the request.**
 
