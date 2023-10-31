@@ -23,9 +23,9 @@ We support GET and POST method:
 * **GET**:  Endpoint, Headers and Expression.
 * **POST**: Endpoint, Headers, Post Body and Expression
 
-For security reasons, you must add Galxe.com to the API server's [Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) header to avoid [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) issues. We will perform a [CORS check](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS#preflighted_requests_in_cors) during the creation process, and if it's not included, the creation will fail.
+**For security reasons, you must add Galxe.com to the API server's [Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) header to avoid [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) issues. We will perform a [CORS check](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS#preflighted_requests_in_cors) during the creation process, and if it's not included, the creation will fail.**
 
-And we require that requests must be responded to within 5 seconds; otherwise, we will cancel the request.
+**And we require that requests must be responded to within 5 seconds; otherwise, we will cancel the request.**
 
 In the request body, we support two placeholders:
 
