@@ -17,7 +17,7 @@ Sectionsthataffectyourrights,includingyourabilitytobringlegalclaimsagainstus.Ple
 readtheseTerms,ourPrivacyPolicyandanyothertermsreferencedinthisdocumentcarefully.
 If you do not agree to be bound by these Terms, you are not permitted to use our Services.
 
-### 1. Introduction
+## 1. Introduction
 
 ProjectGalaxyisacollaborativecredentialinfrastructurethatempowersbrandstobuildbetter
 communitiesandproductsinWeb3,andisoperatedbyStarFrameworksLabsPteLtd.,d/b/a
@@ -30,7 +30,7 @@ these Terms, including Section 13 ("Dispute Resolution"), as well as the Privacy
 PROJECTGALAXYISAPLATFORMONLY.WEARENOTABROKER,FINANCIALINSTITUTIONOR
 CREDITOR. THE SERVICES ARE OFFERED AS AN ADMINISTRATIVE PLATFORM ONLY.
 
-### 2. Using Our Services
+## 2. Using Our Services
 
 **Importantdisclaimers.** ProjectGalaxyisnotintendedas,anddoesnotprovide,anyinvestment
 or financial advice whatsoever. Aswithany financial orinvestment decisions,you should
@@ -118,7 +118,7 @@ build and distribute NFT badge campaigns easily and reward their community membe
 it simple, Galaxy OATs (on-chain achievement tokens) are a digital record of all your life's
 achievements.
 
-### 3. Galaxy Token
+## 3. Galaxy Token
 
 Project Galaxy aims to build a permissionless, open, and collaborative credential data network.
 The Galaxy Token (“GAL”) token is an essential component to such infrastructures as it functions
@@ -139,7 +139,7 @@ token of the Project Galaxy ecosystem. Here are the utilities of GAL:
     data set’s value. Each credential data set will include a revenue stream that will be split
     between credential stake holders pro-rata.
 
-### 4. Digital Wallet
+## 4. Digital Wallet
 
 **DigitalWallet.** Aspartofthe Services,youareabletoconnectyourso-called“digitalasset
 wallet” (“Digital Wallet”) to your account. Youmaybe required to provide usadditional
@@ -148,7 +148,7 @@ offerourowndigitalassetwalletandanyDigitalWalletthatyouconnecttoyourUserAccount
 issubjecttotheTermsandConditionsofthatserviceproviderandwehavedonothaveany
 access to, or control over, your connected Digital Wallet.
 
-### 5. User Conduct
+## 5. User Conduct
 
 **ProhibitedUses.** YoumaynotusetheServicestoengageinthefollowingcategoriesofactivity
 ("Prohibited Uses"). The specific types of use listed below are representative, but not
@@ -206,7 +206,7 @@ amounts.Youagreeandunderstandthatwedonotprovidelegal,tax,orinvestmentadvice.You
 agreetoseekyourownadviceasnecessary,andtocomplywithanylegalobligationsyoumay
 have in connection with your use of our Services.
 
-### 6. Non-Fungible Tokens
+## 6. Non-Fungible Tokens
 
 **NFTAcquisition.** Usersmayhavetheabilitytoobtainanon-fungibletoken(“NFT”)onthe
 Services. ANFTisarecordonthedistributedpublicledgerknownastheblockchain. Our
@@ -241,7 +241,7 @@ mining the NFT Transactions). Service feesmaybeadjustedfromtimetotime inthesole
 discretionofProjectGalaxy.“Gas”feesaresetbytheuserthroughtheuser’sDigitalWallet
 application, based on the market conditions on the relevant blockchain.
 
-### 7. Access to our Services
+## 7. Access to our Services
 
 **Suspension,Termination,andCancellation** .ProjectGalaxymay,atitsoptionandinitssole
 discretion:(a)suspendorrestrictyourUserAccountorDeveloperAccountand/oraccesstoany
@@ -269,7 +269,7 @@ management and/or security procedures to you.
 overyourDigitalWallet.IntheeventourServicesarenolongeravailabletoyou,theNFTsyou
 have purchased are in your Digital Wallet.
 
-### 8. Copyright and License to You
+## 8. Copyright and License to You
 
 **Information Ownership**. Unless otherwise indicated inwriting by us, the Servicesand all
 contentandothermaterialscontainedtherein,including,withoutlimitation,theProjectGalaxy
@@ -384,7 +384,7 @@ holder. Reference to any products, services, processes or other information by n
 trademark, manufacturer, supplier orotherwisedoes notconstituteorimplyendorsement,
 sponsorship or recommendation by Project Galaxy.
 
-### 9. DMCA Notice and Procedure for Copyright Infringement Claims
+## 9. DMCA Notice and Procedure for Copyright Infringement Claims
 
 As Project Galaxy asks others to respect its intellectual property rights, it respects the
 intellectual property rights of others. Project Galaxy, in appropriate circumstances, may remove
@@ -473,7 +473,7 @@ partyisseekingacourtordertopreventfurtherinfringementofthecontent,wemayreplaceor
 cease disabling accessto thematerialthatwasremoved.Thedecisiontoreplaceorcease
 disabling access to any content is at Project Galaxy’s sole discretion.
 
-### 10.Indemnification
+## 10.Indemnification
 
 Tothefullestextentpermittedbyapplicablelaw,youagree toindemnify,defendandhold
 harmless Project Galaxy, and our respective past,present and future employees,officers,
@@ -495,7 +495,7 @@ thedefenseorsettlementofanythirdpartyClaims.THISINDEMNITYISINADDITIONTO,AND
 NOT IN LIEU OF, ANY OTHER INDEMNITIES SET FORTH IN ANY WRITTEN AGREEMENT(S)
 BETWEEN YOU AND PROJECT GALAXY.
 
-### 11.Disclaimers
+## 11.Disclaimers
 
 EXCEPTASEXPRESSLYPROVIDEDTOTHECONTRARYINAWRITINGBYPROJECTGALAXY,THE
 SERVICES,CONTENT CONTAINEDTHEREIN, ANDANYDIGITALASSET(S) LISTEDTHEREINARE
@@ -553,7 +553,7 @@ SOMEJURISDICTIONSDONOTALLOWTHEEXCLUSIONOFIMPLIEDWARRANTIESINCONTRACTS
 WITHCONSUMERS,SOTHEABOVEEXCLUSIONMAYNOTAPPLYTOYOU,SOLELYTOTHEEXTENT
 SUCH EXCLUSION IS SO PROHIBITED BY APPLICABLE LAW.
 
-### 12.Assumption of Risk
+## 12.Assumption of Risk
 
 **Volatility** .Thepriceandliquidityofblockchain-basedassets,includingDigitalAsset(s)andNFTs,
 areextremelyvolatileandmaybesubjecttofluctuations.Fluctuationsinthepriceofother
@@ -580,7 +580,7 @@ cryptocurrenciesand/or so-called“tokens”is uncertain,and newregulationsor
 policiesmayadverselyaffectthedevelopmentoftheServicesand/ortheutilityof
 Digital Asset(s).
 
-### 13.Limitation of Liability
+## 13.Limitation of Liability
 
 TO THE FULLEST EXTENT PROVIDED BY LAW,IN NOEVENT WILLPROJECT GALAXYORITS
 AFFILIATES, OR ITS OR THEIR LICENSORS,SERVICEPROVIDERS,EMPLOYEES,CONTRACTORS,
@@ -615,7 +615,7 @@ TO YOU. IN SUCH STATES OR JURISDICTIONS, OUR LIABILITY IS LIMITED TO THE EXTENT
 PERMITTEDBYLAW,THEREBYMINIMIZINGOURLIABILITYTOYOUTOTHELOWESTAMOUNT
 PERMITTED BY APPLICABLE LAW.
 
-### 14.Dispute Resolution
+## 14.Dispute Resolution
 
 **This Sectionincludes an arbitrationagreement and an agreementthatallclaims willbe
 brought only in an individual capacity(andnotasaclassactionorotherrepresentative
@@ -682,7 +682,7 @@ individually, through arbitration.
 and Project Galaxy each waive any right to a jury trial.
 
 
-### 15.Miscellaneous
+## 15.Miscellaneous
 
 **GoverningLawandVenue** .TheseTerms,youraccesstoanduseoftheServicesandContent,
 andyourparticipation intheServices,shall begovernedbyandconstruedandenforcedin
