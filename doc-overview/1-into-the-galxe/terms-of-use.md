@@ -1,3 +1,9 @@
+---
+sidebar_label: Terms Of Use
+sidebar_position: 8
+slug: terms-of-use
+---
+
 # PROJECT GALAXY TERMS OF USE
 
 Effective Date: Aug 1st, 2022
