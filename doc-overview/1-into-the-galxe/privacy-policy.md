@@ -1,10 +1,10 @@
 ---
-sidebar_label: Galxe Privacy Policy
+sidebar_label: Privacy Policy
 sidebar_position: 7
 slug: privacy-policy
 ---
 
-**PROJECT GALAXY PRIVACY POLICY**
+# PROJECT GALAXY PRIVACY POLICY
 
  Last Updated: Aug 1st, 2022
 
