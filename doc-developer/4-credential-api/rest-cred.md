@@ -255,6 +255,6 @@ function(resp) {
 Make sure the endpoint has whitelisted our server:
 
 ```
-44.240.68.227
-35.81.233.163
+35.185.209.0
+35.203.155.18
 ```
