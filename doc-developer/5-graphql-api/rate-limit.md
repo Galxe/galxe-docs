@@ -8,7 +8,7 @@ To help manage the sheer volume of the requests we receive on our api, limits ar
 
 The maximum number of requests that are allowed are:
 
-**3000 requests/5 minutes**
+**1500 requests/5 minutes**
 
 When an application exceeds the rate limit for a given API endpoint, the API will return a HTTP 429 “Too Many Requests” response code.
 
