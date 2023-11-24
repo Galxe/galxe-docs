@@ -1,3 +1,5 @@
+> :warning: Galxe docs have been moved to https://github.com/Galxe/docs. This repo is now deprecated and no longer maintained.
+
 # galxe-docs
 
 ## CMS
