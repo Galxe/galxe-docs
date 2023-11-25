@@ -9,7 +9,7 @@ slug: api-cred-items-update
 
 1. First you need to create a credential that you want to use in your campaign. Please contact the galaxy BD team if you have no access/experience with galaxy dashboard before, they will help you to walk through the concepts of Galxe dashboard and give you access.
 2. Then you will need an access token bound to your wallet address to use this API. Please go to the Galxe user setting page to generate an access token.
-3. Please ensure that your wallet address has the necessary permissions to access the space to which the cred belongs. Typically, this would be the space's owner or admin. You can follow these steps to add an address as a space admin:
+3. We'll check if the access token in the request is valid. First, we'll find the address bound to the access token and the space to which the requested credential belongs in the request. Then, we'll verify if the address has permission to access that space. Therefore, please ensure that your wallet address has the necessary permissions to access the space to which the cred belongs. Typically, this would be the space's owner or admin. You can follow these steps to add an address as a space admin:
    1. Log in to Galxe using the space owner's address.
    2. Navigate to the Settings page in the left sidebar of the space details page.
    3. Click on the "Accounts" tab in the Settings page.
