@@ -165,7 +165,7 @@ const config = {
             items: [
               {
                 label: "Github",
-                href: "https://github.com/GalxeHQ",
+                href: "https://github.com/Galxe",
               },
               {
                 label: "Developer Docs",
